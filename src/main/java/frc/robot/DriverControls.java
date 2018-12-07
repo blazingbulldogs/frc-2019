@@ -5,13 +5,17 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot;
+package org.usfirst.frc.team581.robot;
+
+import edu.wpi.first.wpilibj.Joystick;
+// import edu.wpi.first.wpilibj.buttons.Button;
+// import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 /**
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
  */
-public class OI {
+public class DriverControls {
   //// CREATING BUTTONS
   // One type of button is a joystick button which is any button on a
   //// joystick.
@@ -39,4 +43,49 @@ public class OI {
   // Start the command when the button is released and let it run the command
   // until it is finished as determined by it's isFinished method.
   // button.whenReleased(new ExampleCommand());
+
+  private Joystick gamepad1 = new Joystick(Ports.gamepad1);
+  private Joystick gamepad2 = new Joystick(Ports.gamepad2);
+
+  // We have two gamepads, each with two sticks, each with two axes.
+
+  public double getDrivepadLeftX() {
+    return snapToZero(gamepad1.getX());
+  }
+
+  public double getDrivepadLeftY() {
+    return snapToZero(-gamepad1.getY());
+  }
+
+  public double getDrivepadRightX() {
+    return snapToZero(gamepad1.getZ());
+  }
+
+  public double getDrivepadRightY() {
+    return snapToZero(-gamepad1.getThrottle());
+  }
+
+  public double getControlpadLeftX() {
+    return snapToZero(gamepad2.getX());
+  }
+
+  public double getControlpadLeftY() {
+    return snapToZero(-gamepad2.getY());
+  }
+
+  public double getControlpadRightX() {
+    return snapToZero(gamepad2.getZ());
+  }
+
+  public double getControlpadRightY() {
+    return snapToZero(-gamepad2.getThrottle());
+  }
+
+  private double snapToZero(double rawInput) {
+    if (Math.abs(rawInput) < 0.01) {
+      return 0.0;
+    } else {
+      return rawInput;
+    }
+  }
 }
