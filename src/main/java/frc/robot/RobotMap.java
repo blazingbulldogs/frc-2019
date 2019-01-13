@@ -24,5 +24,15 @@ public class RobotMap {
   // public static int rangefinderPort = 1;
   // public static int rangefinderModule = 1;
 
-  public static int gyro = 0;
+  // Analog gyroscope port
+  public static final int gyro = 0;
+
+  // Joystick USB port
+  public static final int joystick = 0;
+
+  // Victor SPX motor controllers
+  public static final int victorSPXFrontLeft = 1;
+  public static final int victorSPXFrontRight = 2;
+  public static final int victorSPXBackLeft = 3;
+  public static final int victorSPXBackRight = 4;
 }

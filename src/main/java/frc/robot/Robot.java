@@ -7,16 +7,15 @@
 
 package frc.robot;
 
-import edu.wpi.first.wpilibj.TimedRobot;
-import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.command.Scheduler;
-import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.AnalogGyro;
-import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.PWMVictorSPX;
+import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.command.Scheduler;
+import edu.wpi.first.wpilibj.drive.MecanumDrive;
 import edu.wpi.first.wpilibj.shuffleboard.BuiltInWidgets;
-import frc.robot.commands.ExampleCommand;
+import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import frc.robot.subsystems.ExampleSubsystem;
 
 /**
@@ -30,10 +29,9 @@ public class Robot extends TimedRobot {
   public static ExampleSubsystem m_subsystem = new ExampleSubsystem();
   public static OI m_oi;
 
-  static AnalogGyro gyro = new AnalogGyro(RobotMap.gyro);
-
-  Command m_autonomousCommand;
-  SendableChooser<Command> m_chooser = new SendableChooser<>();
+  private final AnalogGyro m_gyro = new AnalogGyro(RobotMap.gyro);
+  private MecanumDrive m_robotDrive;
+  private final Joystick m_joystick = new Joystick(RobotMap.joystick);
 
   /**
    * This function is run when the robot is first started up and should be used
@@ -42,13 +40,27 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
     m_oi = new OI();
-    m_chooser.setDefaultOption("Default Auto", new ExampleCommand());
-    // chooser.addOption("My Auto", new MyAutoCommand());
 
-    gyro.calibrate();
-    Shuffleboard.getTab("Driving").add("Gyro", gyro).withWidget(BuiltInWidgets.kGyro);
+    // Set the gyroscope to 0
+    m_gyro.calibrate();
+    // Since `gyro` is sendable, we can pass it in to `add()` and forget about it
+    Shuffleboard.getTab("Driving").add("Gyro", m_gyro).withWidget(BuiltInWidgets.kGyro);
 
+    // Add one camera to the camera server
     CameraServer.getInstance().startAutomaticCapture();
+
+    // Motor controllers
+    PWMVictorSPX frontLeft = new PWMVictorSPX(RobotMap.victorSPXFrontLeft);
+    PWMVictorSPX backLeft = new PWMVictorSPX(RobotMap.victorSPXBackLeft);
+    PWMVictorSPX frontRight = new PWMVictorSPX(RobotMap.victorSPXFrontRight);
+    PWMVictorSPX backRight = new PWMVictorSPX(RobotMap.victorSPXBackRight);
+
+    // Invert the left motors
+    frontLeft.setInverted(true);
+    backLeft.setInverted(true);
+
+    // Set the robot drive
+    m_robotDrive = new MecanumDrive(frontLeft, backLeft, frontRight, backRight);
   }
 
   /**
@@ -62,7 +74,6 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
-    SmartDashboard.putString("DB/String 0", new Double(gyro.getAngle()).toString());
   }
 
   /**
@@ -79,52 +90,8 @@ public class Robot extends TimedRobot {
     Scheduler.getInstance().run();
   }
 
-  /**
-   * This autonomous (along with the chooser code above) shows how to select
-   * between different autonomous modes using the dashboard. The sendable chooser
-   * code works with the Java SmartDashboard. If you prefer the LabVIEW Dashboard,
-   * remove all of the chooser code and uncomment the getString code to get the
-   * auto name from the text box below the Gyro
-   *
-   * <p>
-   * You can add additional auto modes by adding additional commands to the
-   * chooser code above (like the commented example) or additional comparisons to
-   * the switch structure below with additional strings & commands.
-   */
-  @Override
-  public void autonomousInit() {
-    m_autonomousCommand = m_chooser.getSelected();
-
-    /*
-     * String autoSelected = SmartDashboard.getString("Auto Selector", "Default");
-     * switch(autoSelected) { case "My Auto": autonomousCommand = new
-     * MyAutoCommand(); break; case "Default Auto": default: autonomousCommand = new
-     * ExampleCommand(); break; }
-     */
-
-    // schedule the autonomous command (example)
-    if (m_autonomousCommand != null) {
-      m_autonomousCommand.start();
-    }
-  }
-
-  /**
-   * This function is called periodically during autonomous.
-   */
-  @Override
-  public void autonomousPeriodic() {
-    Scheduler.getInstance().run();
-  }
-
   @Override
   public void teleopInit() {
-    // This makes sure that the autonomous stops running when
-    // teleop starts running. If you want the autonomous to
-    // continue until interrupted by another command, remove
-    // this line or comment it out.
-    if (m_autonomousCommand != null) {
-      m_autonomousCommand.cancel();
-    }
   }
 
   /**
@@ -133,6 +100,8 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
+
+    m_robotDrive.driveCartesian(m_joystick.getX(), m_joystick.getY(), m_joystick.getZ(), m_gyro.getAngle());
   }
 
   /**
