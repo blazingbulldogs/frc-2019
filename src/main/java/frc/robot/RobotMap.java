@@ -28,7 +28,7 @@ public class RobotMap {
   public static final int gyro = 0;
 
   // Joystick USB port
-  public static final int joystick = 0;
+  public static final int joystick = 1;
 
   // Victor SPX motor controllers
   public static final int victorSPXFrontLeft = 1;
