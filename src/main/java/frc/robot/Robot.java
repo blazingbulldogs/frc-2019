@@ -101,7 +101,14 @@ public class Robot extends TimedRobot {
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
 
-    m_robotDrive.driveCartesian(m_joystick.getX(), m_joystick.getY(), m_joystick.getZ(), m_gyro.getAngle());
+    // Adjust sensitivity of joysticks
+    final double multiplier = 1;
+
+    final double x = m_joystick.getX() * multiplier;
+    final double y = m_joystick.getY() * multiplier;
+    final double z = m_joystick.getZ() * multiplier;
+
+    m_robotDrive.driveCartesian(x, y, z, m_gyro.getAngle());
   }
 
   /**
