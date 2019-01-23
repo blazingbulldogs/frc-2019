@@ -16,6 +16,7 @@ import edu.wpi.first.wpilibj.drive.MecanumDrive;
 import frc.robot.OperatorInput;
 import frc.robot.RobotMap;
 import frc.robot.structures.DriveJoystick;
+import frc.robot.structures.JoystickPorts;
 
 /**
  * Driving subsystem that controls motors.
@@ -63,8 +64,8 @@ public class Drive extends Subsystem {
     final OperatorInput oi = new OperatorInput();
     final DriveJoystick joystick = OperatorInput.driveJoystick;
 
-    final double x = joystick.getScaledX();
-    final double y = joystick.getScaledY();
+    final double x = joystick.getScaledAxis(JoystickPorts.rightXAxis);
+    final double y = joystick.getScaledAxis(JoystickPorts.rightYAxis);
     final double z = OperatorInput.scale(OperatorInput.triggerTurn());
 
     oi.logJoystick(joystick);
