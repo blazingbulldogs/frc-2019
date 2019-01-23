@@ -10,6 +10,7 @@ package frc.robot;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.wpilibj.shuffleboard.BuiltInWidgets;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
+import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardTab;
 import frc.robot.structures.DriveJoystick;
 import frc.robot.structures.JoystickPorts;
 
@@ -46,13 +47,15 @@ public class OperatorInput {
    * This class is the glue that binds the controls on the physical operator
    * interface to the commands and command groups that allow control of the robot.
    */
-  public OperatorInput() {
-    joystickData = Shuffleboard.getTab("Driving").add("Joystick Output", new double[] { 0, 0, 0 })
-        .withWidget(BuiltInWidgets.kGraph).getEntry();
-  }
-
+  private ShuffleboardTab tab = Shuffleboard.getTab("Driving");
   public static final DriveJoystick driveJoystick = new DriveJoystick(RobotMap.joystick);
   private NetworkTableEntry joystickData;
+
+  public OperatorInput() {
+    joystickData = tab
+      .add("Joystick Output", new double[] { 0, 0, 0 })
+      .withWidget(BuiltInWidgets.kGraph).getEntry();
+  }
 
   /**
    * Get output from the left and right triggers that is in the ranges of the
@@ -85,9 +88,9 @@ public class OperatorInput {
 
     this.joystickData.setDoubleArray(joystickValues);
 
-    Shuffleboard.getTab("Driving").add("Joystick X", x).withWidget(BuiltInWidgets.kNumberBar);
-    Shuffleboard.getTab("Driving").add("Joystick Y", y).withWidget(BuiltInWidgets.kNumberBar);
-    Shuffleboard.getTab("Driving").add("Joystick Z", z).withWidget(BuiltInWidgets.kNumberBar);
+    tab.add("Joystick X", x).withWidget(BuiltInWidgets.kNumberBar);
+    tab.add("Joystick Y", y).withWidget(BuiltInWidgets.kNumberBar);
+    tab.add("Joystick Z", z).withWidget(BuiltInWidgets.kNumberBar);
   }
 
   /**
