@@ -14,6 +14,10 @@ import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardTab;
 import frc.robot.structures.DriveJoystick;
 import frc.robot.structures.JoystickPorts;
 
+/**
+ * This class is the glue that binds the controls on the physical operator
+ * interface to the commands and command groups that allow control of the robot.
+ */
 public class OperatorInput {
   //// CREATING BUTTONS
   // One type of button is a joystick button which is any button on a
@@ -43,20 +47,10 @@ public class OperatorInput {
   // until it is finished as determined by it's isFinished method.
   // button.whenReleased(new ExampleCommand());
 
-  
   private ShuffleboardTab tab = Shuffleboard.getTab("Driving");
   public static final DriveJoystick driveJoystick = new DriveJoystick(RobotMap.joystick);
-  private NetworkTableEntry joystickData;
-
-  /**
-   * This class is the glue that binds the controls on the physical operator
-   * interface to the commands and command groups that allow control of the robot.
-   */
-  public OperatorInput() {
-    joystickData = tab
-      .add("Joystick Output", new double[] { 0, 0, 0 })
+  private NetworkTableEntry joystickData = tab.add("Joystick Output", new double[] { 0, 0, 0 })
       .withWidget(BuiltInWidgets.kGraph).getEntry();
-  }
 
   /**
    * Get output from the left and right triggers that is in the ranges of the
