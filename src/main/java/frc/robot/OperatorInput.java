@@ -43,14 +43,15 @@ public class OperatorInput {
   // until it is finished as determined by it's isFinished method.
   // button.whenReleased(new ExampleCommand());
 
-  /**
-   * This class is the glue that binds the controls on the physical operator
-   * interface to the commands and command groups that allow control of the robot.
-   */
+  
   private ShuffleboardTab tab = Shuffleboard.getTab("Driving");
   public static final DriveJoystick driveJoystick = new DriveJoystick(RobotMap.joystick);
   private NetworkTableEntry joystickData;
 
+  /**
+   * This class is the glue that binds the controls on the physical operator
+   * interface to the commands and command groups that allow control of the robot.
+   */
   public OperatorInput() {
     joystickData = tab
       .add("Joystick Output", new double[] { 0, 0, 0 })
