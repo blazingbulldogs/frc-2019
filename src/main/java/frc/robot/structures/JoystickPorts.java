@@ -1,6 +1,10 @@
 package frc.robot.structures;
 
-public class JoystickPorts {
+/**
+ * Human readable variables for every numerical port on a joystick.
+ */
+public final class JoystickPorts {
+  // Lettered buttons
   public static final int aButton = 0;
   public static final int bButton = 1;
   public static final int xButton = 2;
@@ -26,6 +30,11 @@ public class JoystickPorts {
   public static final int dpadLeft = 14;
   public static final int dpadRight = 15; 
 
+  // Joystick axes
+  public static final int leftXAxis = 0;
+  public static final int leftYAxis = 1;
   public static final int leftTriggerAxis = 2;
   public static final int rightTriggerAxis = 3;  
+  public static final int rightXAxis = 4;
+  public static final int rightYAxis = 5;
 }
