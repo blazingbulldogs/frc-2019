@@ -30,9 +30,9 @@ public class RobotMap {
   // Joystick USB port
   public static final int joystick = 0;
 
-  // Victor SPX motor controllers
+  // Talon/Victor SPX motor controllers
   public static final int talonFrontLeft = 4;
   public static final int talonFrontRight = 3;
   public static final int talonRearLeft = 2;
-  public static final int talonRearRight = 1;
+  public static final int victorRearRight = 1;
 }

@@ -7,10 +7,6 @@
 
 package frc.robot;
 
-import edu.wpi.first.networktables.NetworkTableEntry;
-import edu.wpi.first.wpilibj.shuffleboard.BuiltInWidgets;
-import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
-import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardTab;
 import frc.robot.structures.DriveJoystick;
 import frc.robot.structures.JoystickPorts;
 
@@ -47,10 +43,7 @@ public class OperatorInput {
   // until it is finished as determined by it's isFinished method.
   // button.whenReleased(new ExampleCommand());
 
-  private ShuffleboardTab tab = Shuffleboard.getTab("Driving");
   public static final DriveJoystick driveJoystick = new DriveJoystick(RobotMap.joystick);
-  private NetworkTableEntry joystickData = tab.add("Joystick Output", new double[] { 0, 0, 0 })
-      .withWidget(BuiltInWidgets.kGraph).getEntry();
 
   /**
    * Get output from the left and right triggers that is in the ranges of the
@@ -67,25 +60,6 @@ public class OperatorInput {
       // Right trigger in use
       return rightTrigger;
     }
-  }
-
-  /**
-   * Log joystick values using a graph on Shuffleboard.
-   * 
-   * @param joystick Joystick to log
-   */
-  public final void logJoystick(DriveJoystick joystick) {
-    final double x = joystick.getScaledX();
-    final double y = joystick.getScaledY();
-    final double z = scale(OperatorInput.triggerTurn());
-
-    double[] joystickValues = new double[] { x, y, z };
-
-    this.joystickData.setDoubleArray(joystickValues);
-
-    tab.add("Joystick X", x).withWidget(BuiltInWidgets.kNumberBar);
-    tab.add("Joystick Y", y).withWidget(BuiltInWidgets.kNumberBar);
-    tab.add("Joystick Z", z).withWidget(BuiltInWidgets.kNumberBar);
   }
 
   /**

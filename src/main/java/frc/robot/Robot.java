@@ -8,12 +8,10 @@
 package frc.robot;
 
 import edu.wpi.first.cameraserver.CameraServer;
-import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
-import edu.wpi.first.wpilibj.shuffleboard.BuiltInWidgets;
-import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import frc.robot.subsystems.Drive;
+import frc.robot.subsystems.Gyro;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -24,7 +22,7 @@ import frc.robot.subsystems.Drive;
  */
 public class Robot extends TimedRobot {
   public static Drive driveSubsytem = new Drive();
-  private static AnalogGyro gyro = driveSubsytem.gyro;
+  public static Gyro gyroSubsytem = new Gyro();
 
   /**
    * This function is run when the robot is first started up and should be used
@@ -32,11 +30,6 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
-    // Set the gyroscope to 0
-    gyro.calibrate();
-    // Since `gyro` is sendable, we can pass it in to `add()` and forget about it
-    Shuffleboard.getTab("Driving").add("Gyro", gyro).withWidget(BuiltInWidgets.kGyro);
-
     // Add one camera to the camera server
     CameraServer.getInstance().startAutomaticCapture();
   }
