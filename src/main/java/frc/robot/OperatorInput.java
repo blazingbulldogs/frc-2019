@@ -7,13 +7,12 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import frc.robot.commands.ActivateSolenoid;
+import frc.robot.commands.DeactivateSolenoid;
 import frc.robot.structures.DriveJoystick;
 import frc.robot.structures.JoystickPorts;
 
-/**
- * This class is the glue that binds the controls on the physical operator
- * interface to the commands and command groups that allow control of the robot.
- */
 public class OperatorInput {
   //// CREATING BUTTONS
   // One type of button is a joystick button which is any button on a
@@ -46,6 +45,24 @@ public class OperatorInput {
   public static final DriveJoystick driveJoystick = new DriveJoystick(RobotMap.joystick);
 
   /**
+   * This class is the glue that binds the controls on the physical operator
+   * interface to the commands and command groups that allow control of the robot.
+   */
+  public OperatorInput() {
+    System.out.println("hello from operator input");
+    final JoystickButton aButton = new JoystickButton(driveJoystick, JoystickPorts.aButton);
+    final JoystickButton xButton = new JoystickButton(driveJoystick, JoystickPorts.xButton);
+    final JoystickButton yButton = new JoystickButton(driveJoystick, JoystickPorts.yButton);
+
+    aButton.whenPressed(new ActivateSolenoid(Robot.solenoidsSubsytem.randomSolenoid1));
+    aButton.whenReleased(new DeactivateSolenoid(Robot.solenoidsSubsytem.randomSolenoid1));
+
+    xButton.whenPressed(new ActivateSolenoid(Robot.solenoidsSubsytem.randomSolenoid1));
+    yButton.whenPressed(new DeactivateSolenoid(Robot.solenoidsSubsytem.randomSolenoid1));
+    // aButton.toggleWhenPressed(new SolenoidTime(Robot.solenoidsSubsytem.randomSolenoid1));
+  }
+
+  /**
    * Get output from the left and right triggers that is in the ranges of the
    * z-axis from a controller.
    */
@@ -68,7 +85,7 @@ public class OperatorInput {
    * @return scaled value
    */
   public static double scale(double value) {
-    return Math.signum(value) * scaleHelper(Math.abs(value));
+    return Math.signum(value) * scaleHelper(value);
   }
 
   /**

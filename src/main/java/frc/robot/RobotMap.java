@@ -35,4 +35,8 @@ public class RobotMap {
   public static final int talonFrontRight = 3;
   public static final int talonRearLeft = 2;
   public static final int victorRearRight = 1;
+
+  // Solenoids
+  public static final int randomSolenoid1 = 0;
+  public static final int randomSolenoid2 = 1;
 }

@@ -30,6 +30,8 @@ public class Drive extends Subsystem {
 
   public MecanumDrive robotDrive;
 
+  private final Logger logger = new Logger();
+
   // Motor controllers
   public final WPI_TalonSRX frontLeft = new WPI_TalonSRX(RobotMap.talonFrontLeft);
   public final WPI_TalonSRX rearLeft = new WPI_TalonSRX(RobotMap.talonRearLeft);
@@ -62,7 +64,6 @@ public class Drive extends Subsystem {
 
   @Override
   public void periodic() {
-    final Logger logger = new Logger();
     final Gyro gyro = Robot.gyroSubsytem;
 
     final DriveJoystick joystick = OperatorInput.driveJoystick;

@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import frc.robot.subsystems.Drive;
 import frc.robot.subsystems.Gyro;
+import frc.robot.subsystems.Solenoids;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -23,6 +24,7 @@ import frc.robot.subsystems.Gyro;
 public class Robot extends TimedRobot {
   public static Drive driveSubsytem = new Drive();
   public static Gyro gyroSubsytem = new Gyro();
+  public static Solenoids solenoidsSubsytem = new Solenoids();
 
   /**
    * This function is run when the robot is first started up and should be used
