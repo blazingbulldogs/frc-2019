@@ -8,8 +8,10 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.commands.ActivateSolenoid;
 import frc.robot.commands.DeactivateSolenoid;
+import frc.robot.structures.Config;
 import frc.robot.structures.DriveJoystick;
 import frc.robot.structures.JoystickPorts;
 
@@ -49,17 +51,17 @@ public class OperatorInput {
    * interface to the commands and command groups that allow control of the robot.
    */
   public OperatorInput() {
-    System.out.println("hello from operator input");
-    final JoystickButton aButton = new JoystickButton(driveJoystick, JoystickPorts.aButton);
-    final JoystickButton xButton = new JoystickButton(driveJoystick, JoystickPorts.xButton);
-    final JoystickButton yButton = new JoystickButton(driveJoystick, JoystickPorts.yButton);
+    if (Config.solenoidsSubsytemEnabled) {
+      final JoystickButton aButton = new JoystickButton(driveJoystick, JoystickPorts.aButton);
+      final JoystickButton xButton = new JoystickButton(driveJoystick, JoystickPorts.xButton);
+      final JoystickButton yButton = new JoystickButton(driveJoystick, JoystickPorts.yButton);
 
-    aButton.whenPressed(new ActivateSolenoid(Robot.solenoidsSubsytem.randomSolenoid1));
-    aButton.whenReleased(new DeactivateSolenoid(Robot.solenoidsSubsytem.randomSolenoid1));
+      aButton.whenPressed(new DeactivateSolenoid(Robot.solenoidsSubsytem.randomSolenoid1));
+      aButton.whenReleased(new ActivateSolenoid(Robot.solenoidsSubsytem.randomSolenoid1));
 
-    xButton.whenPressed(new ActivateSolenoid(Robot.solenoidsSubsytem.randomSolenoid1));
-    yButton.whenPressed(new DeactivateSolenoid(Robot.solenoidsSubsytem.randomSolenoid1));
-    // aButton.toggleWhenPressed(new SolenoidTime(Robot.solenoidsSubsytem.randomSolenoid1));
+      xButton.whenPressed(new ActivateSolenoid(Robot.solenoidsSubsytem.randomSolenoid1));
+      yButton.whenPressed(new DeactivateSolenoid(Robot.solenoidsSubsytem.randomSolenoid1));
+    }
   }
 
   /**

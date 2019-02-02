@@ -10,6 +10,7 @@ package frc.robot;
 import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
+import frc.robot.structures.Config;
 import frc.robot.subsystems.Drive;
 import frc.robot.subsystems.Gyro;
 import frc.robot.subsystems.Solenoids;
@@ -22,9 +23,21 @@ import frc.robot.subsystems.Solenoids;
  * project.
  */
 public class Robot extends TimedRobot {
-  public static Drive driveSubsytem = new Drive();
-  public static Gyro gyroSubsytem = new Gyro();
-  public static Solenoids solenoidsSubsytem = new Solenoids();
+  public static Drive driveSubsytem;
+  public static Gyro gyroSubsytem;
+  public static Solenoids solenoidsSubsytem;
+
+  Robot() {
+    if (Config.driveSubsytemEnabled) {
+      driveSubsytem = new Drive();
+    }
+    if (Config.gyroSubsytemEnabled) {
+      gyroSubsytem = new Gyro();
+    }
+    if (Config.solenoidsSubsytemEnabled) {
+      solenoidsSubsytem = new Solenoids();
+    }
+  }
 
   /**
    * This function is run when the robot is first started up and should be used
@@ -32,8 +45,16 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
-    // Add one camera to the camera server
-    CameraServer.getInstance().startAutomaticCapture();
+    if (Config.camerasEnabled) {
+      // Add one camera to the camera server
+      CameraServer.getInstance().startAutomaticCapture();
+    }
+
+    if (Config.solenoidsSubsytemEnabled) {
+      solenoidsSubsytem.randomSolenoid1.set(true);
+    }
+
+    new OperatorInput();
   }
 
   /**
@@ -45,6 +66,7 @@ public class Robot extends TimedRobot {
   @Override
   public void robotPeriodic() {
   }
+
 
   @Override
   public void disabledPeriodic() {

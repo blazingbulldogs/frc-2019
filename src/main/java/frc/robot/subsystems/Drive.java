@@ -17,6 +17,7 @@ import frc.robot.OperatorInput;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
 import frc.robot.commands.DriveWithJoystick;
+import frc.robot.structures.Config;
 import frc.robot.structures.DriveJoystick;
 import frc.robot.structures.JoystickPorts;
 import frc.robot.structures.Logger;
@@ -64,7 +65,14 @@ public class Drive extends Subsystem {
 
   @Override
   public void periodic() {
-    final Gyro gyro = Robot.gyroSubsytem;
+    double angle = 0;
+    boolean gyroDrive = false;
+
+    if (Config.gyroSubsytemEnabled) {
+      final Gyro gyro = Robot.gyroSubsytem;
+      angle = gyro.ahrs.getAngle();
+      gyroDrive = gyro.gyroDrive;
+    }
 
     final DriveJoystick joystick = OperatorInput.driveJoystick;
 
@@ -74,7 +82,8 @@ public class Drive extends Subsystem {
 
     logger.logJoystick(joystick);
 
-    robotDrive.driveCartesian(x, y, z, gyro.gyroDrive ? gyro.ahrs.getAngle() : 0);
+    robotDrive.driveCartesian(x, y, z, gyroDrive ? angle : 0);
+
   }
 
   public void stop() {
