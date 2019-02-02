@@ -13,15 +13,13 @@ import edu.wpi.first.wpilibj.SerialPort;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.shuffleboard.BuiltInWidgets;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
-import frc.robot.OperatorInput;
-import frc.robot.structures.JoystickPorts;
 
 public class Gyro extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
 
   public AHRS ahrs;
-  public boolean gyroDrive = false;
+  public boolean gyroDrive = true;
 
   /**
    * NavX gyroscope.
@@ -40,6 +38,5 @@ public class Gyro extends Subsystem {
 
   @Override
   public void periodic() {
-    gyroDrive = OperatorInput.driveJoystick.getRawButtonPressed(JoystickPorts.bButton);
   }
 }
