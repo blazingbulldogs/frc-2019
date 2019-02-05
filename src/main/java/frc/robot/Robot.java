@@ -50,10 +50,6 @@ public class Robot extends TimedRobot {
       CameraServer.getInstance().startAutomaticCapture();
     }
 
-    if (Config.solenoidsSubsytemEnabled) {
-      solenoidsSubsytem.randomSolenoid1.set(true);
-    }
-
     new OperatorInput();
   }
 
