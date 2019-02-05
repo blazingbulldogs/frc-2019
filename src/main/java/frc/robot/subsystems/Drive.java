@@ -16,7 +16,6 @@ import edu.wpi.first.wpilibj.drive.MecanumDrive;
 import frc.robot.OperatorInput;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
-import frc.robot.commands.DriveWithJoystick;
 import frc.robot.structures.Config;
 import frc.robot.structures.DriveJoystick;
 import frc.robot.structures.JoystickPorts;
@@ -60,7 +59,7 @@ public class Drive extends Subsystem {
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
-    setDefaultCommand(new DriveWithJoystick());
+    // setDefaultCommand(new ExampleCommand());
   }
 
   @Override
