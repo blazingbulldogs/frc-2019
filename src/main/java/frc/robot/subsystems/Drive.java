@@ -33,27 +33,27 @@ public class Drive extends Subsystem {
   private final Logger logger = new Logger();
 
   // Motor controllers
-  public final WPI_TalonSRX frontLeft = new WPI_TalonSRX(RobotMap.talonFrontLeft);
-  public final WPI_TalonSRX rearLeft = new WPI_TalonSRX(RobotMap.talonRearLeft);
-  public final WPI_TalonSRX frontRight = new WPI_TalonSRX(RobotMap.talonFrontRight);
-  public final WPI_VictorSPX rearRight = new WPI_VictorSPX(RobotMap.victorRearRight);
+  public final WPI_TalonSRX talonRearRight = new WPI_TalonSRX(RobotMap.talonRearRight);
+  public final WPI_TalonSRX talonRearLeft = new WPI_TalonSRX(RobotMap.talonRearLeft);
+  public final WPI_TalonSRX talonFrontRight = new WPI_TalonSRX(RobotMap.talonFrontRight);
+  public final WPI_VictorSPX victorFrontLeft = new WPI_VictorSPX(RobotMap.victorFrontLeft);
 
   /**
    * Set up motors and robot drive.
    */
   public Drive() {
-    frontLeft.set(ControlMode.PercentOutput, 0);
-    rearLeft.set(ControlMode.PercentOutput, 0);
-    frontRight.set(ControlMode.PercentOutput, 0);
-    rearRight.set(ControlMode.PercentOutput, 0);
+    victorFrontLeft.set(ControlMode.PercentOutput, 0);
+    talonFrontRight.set(ControlMode.PercentOutput, 0);
+    talonRearLeft.set(ControlMode.PercentOutput, 0);
+    talonRearRight.set(ControlMode.PercentOutput, 0);
 
     // Invert all the motors
-    frontLeft.setInverted(true);
-    rearLeft.setInverted(true);
-    frontRight.setInverted(true);
-    rearRight.setInverted(true);
+    victorFrontLeft.setInverted(true);
+    talonRearLeft.setInverted(true);
+    victorFrontLeft.setInverted(true);
+    talonFrontRight.setInverted(true);
 
-    robotDrive = new MecanumDrive(frontLeft, rearLeft, frontRight, rearRight);
+    robotDrive = new MecanumDrive(victorFrontLeft, talonRearLeft, talonFrontRight, talonRearRight);
   }
 
   @Override
