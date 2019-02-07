@@ -5,7 +5,7 @@ package frc.robot.structures;
  */
 public final class Config {
   // Whether or not to use USB cameras
-  public static final boolean camerasEnabled = false;
+  public static final boolean camerasEnabled = true;
 
   public static final String jetsonIP = "http://10.53.32.12:5800";
 

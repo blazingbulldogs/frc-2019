@@ -12,6 +12,7 @@ import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import frc.robot.structures.Config;
+import frc.robot.structures.Logger;
 import frc.robot.subsystems.Drive;
 import frc.robot.subsystems.Gyro;
 import frc.robot.subsystems.Solenoids;
@@ -50,6 +51,10 @@ public class Robot extends TimedRobot {
       CameraServer cameraServer = CameraServer.getInstance();
       HttpCamera jetsonCamera = new HttpCamera("camera", Config.jetsonIP + "/?action=stream");
       cameraServer.startAutomaticCapture(jetsonCamera);
+      Logger.tab
+        .add("Camera", jetsonCamera)
+        .withSize(7, 6)
+        .withPosition(4, 0);
     }
 
     new OperatorInput();
