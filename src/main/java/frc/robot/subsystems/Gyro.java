@@ -12,7 +12,7 @@ import com.kauailabs.navx.frc.AHRS;
 import edu.wpi.first.wpilibj.SerialPort;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.shuffleboard.BuiltInWidgets;
-import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
+import frc.robot.structures.Logger;
 
 public class Gyro extends Subsystem {
   // Put methods for controlling this subsystem
@@ -27,7 +27,7 @@ public class Gyro extends Subsystem {
   public Gyro() {
     ahrs = new AHRS(SerialPort.Port.kUSB1);
 
-    Shuffleboard.getTab("Driving").add("Gyro", ahrs).withWidget(BuiltInWidgets.kGyro);
+    Logger.tab.add("Gyro", ahrs).withWidget(BuiltInWidgets.kGyro);
   }
 
   @Override

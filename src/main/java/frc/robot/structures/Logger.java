@@ -8,7 +8,7 @@ import frc.robot.OperatorInput;
 import frc.robot.RobotMap;
 
 public class Logger {
-  private ShuffleboardTab tab = Shuffleboard.getTab("Driving");
+  public static final ShuffleboardTab tab = Shuffleboard.getTab("rattab");
   public static final DriveJoystick driveJoystick = new DriveJoystick(RobotMap.joystick);
   private final NetworkTableEntry joystickData = tab.add("Joystick Output", new double[] { 0, 0, 0 })
       .withWidget(BuiltInWidgets.kGraph).getEntry();

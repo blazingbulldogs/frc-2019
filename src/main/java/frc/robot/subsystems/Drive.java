@@ -13,6 +13,7 @@ import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
+import edu.wpi.first.wpilibj.shuffleboard.BuiltInWidgets;
 import frc.robot.OperatorInput;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
@@ -47,7 +48,17 @@ public class Drive extends Subsystem {
     talonRearLeft.set(ControlMode.PercentOutput, 0);
     talonRearRight.set(ControlMode.PercentOutput, 0);
 
+    // Invert all the motors
+    victorFrontLeft.setInverted(true);
+    talonRearLeft.setInverted(true);
+    victorFrontLeft.setInverted(true);
+    talonFrontRight.setInverted(true);
+
     robotDrive = new MecanumDrive(victorFrontLeft, talonRearLeft, talonFrontRight, talonRearRight);
+
+    Logger.tab
+      .add("Mecanum Mode", robotDrive)
+      .withWidget(BuiltInWidgets.kMecanumDrive);
   }
 
   @Override
@@ -76,7 +87,6 @@ public class Drive extends Subsystem {
     logger.logJoystick(joystick);
 
     robotDrive.driveCartesian(x, y, z, gyroDrive ? angle : 0);
-
   }
 
   public void stop() {

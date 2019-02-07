@@ -86,7 +86,7 @@ public class OperatorInput {
    * @return scaled value
    */
   public static double scale(double value) {
-    return Math.signum(value) * scaleHelper(value);
+    return Math.signum(value) * scaleHelper(Math.abs(value));
   }
 
   /**

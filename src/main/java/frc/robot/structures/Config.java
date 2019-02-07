@@ -5,7 +5,7 @@ package frc.robot.structures;
  */
 public final class Config {
   // Whether or not to use USB cameras
-  public static final boolean camerasEnabled = false;
+  public static final boolean camerasEnabled = true;
 
   // Enable certain subsytems
   public static final boolean driveSubsytemEnabled = true;
