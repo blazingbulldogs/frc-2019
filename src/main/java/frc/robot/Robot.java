@@ -7,7 +7,7 @@
 
 package frc.robot;
 
-import edu.wpi.cscore.UsbCamera;
+import edu.wpi.cscore.HttpCamera;
 import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -48,11 +48,11 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
     if (Config.camerasEnabled) {
-      // Add one camera to the camera server
-      UsbCamera cam = CameraServer.getInstance().startAutomaticCapture();
-
+      CameraServer cameraServer = CameraServer.getInstance();
+      HttpCamera jetsonCamera = new HttpCamera("camera", Config.jetsonIP + "/?action=stream");
+      cameraServer.startAutomaticCapture(jetsonCamera);
       Logger.tab
-        .add("Camera", cam)
+        .add("Camera", jetsonCamera)
         .withSize(7, 6)
         .withPosition(4, 0);
     }
@@ -69,7 +69,6 @@ public class Robot extends TimedRobot {
   @Override
   public void robotPeriodic() {
   }
-
 
   @Override
   public void disabledPeriodic() {
