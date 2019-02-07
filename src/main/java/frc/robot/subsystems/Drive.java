@@ -47,12 +47,6 @@ public class Drive extends Subsystem {
     talonRearLeft.set(ControlMode.PercentOutput, 0);
     talonRearRight.set(ControlMode.PercentOutput, 0);
 
-    // Invert all the motors
-    victorFrontLeft.setInverted(true);
-    talonRearLeft.setInverted(true);
-    victorFrontLeft.setInverted(true);
-    talonFrontRight.setInverted(true);
-
     robotDrive = new MecanumDrive(victorFrontLeft, talonRearLeft, talonFrontRight, talonRearRight);
   }
 
