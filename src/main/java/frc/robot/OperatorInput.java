@@ -82,19 +82,11 @@ public class OperatorInput {
 
   /**
    * Scales a value to be more precise at lower values. Used for driving.
+   * Cubes the joystick value.
    * 
    * @return scaled value
    */
   public static double scale(double value) {
-    return Math.signum(value) * scaleHelper(Math.abs(value));
-  }
-
-  /**
-   * Used internally for scaling values.
-   * 
-   * @return partially scaled value
-   */
-  private static double scaleHelper(double value) {
-    return Math.min(1.0, Math.pow(2, value) - 1);
+    return Math.pow(value, 3);
   }
 }
