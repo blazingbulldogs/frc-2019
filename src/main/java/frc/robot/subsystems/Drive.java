@@ -78,8 +78,7 @@ public class Drive extends Subsystem {
 
     final double x = joystick.getScaledAxis(JoystickPorts.rightXAxis);
     final double y = -joystick.getScaledAxis(JoystickPorts.rightYAxis);
-    // Get inverse of trigger turn value because all the motors are inverted
-    final double z = OperatorInput.scale(-OperatorInput.triggerTurn());
+    final double z = OperatorInput.scale(OperatorInput.triggerTurn());
 
     logger.logJoystick(joystick);
 
