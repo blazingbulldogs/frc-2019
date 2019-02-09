@@ -48,12 +48,6 @@ public class Drive extends Subsystem {
     talonRearLeft.set(ControlMode.PercentOutput, 0);
     talonRearRight.set(ControlMode.PercentOutput, 0);
 
-    // Invert all the motors
-    victorFrontLeft.setInverted(true);
-    talonFrontRight.setInverted(true);
-    talonRearLeft.setInverted(true);
-    talonRearRight.setInverted(true);
-
     robotDrive = new MecanumDrive(victorFrontLeft, talonRearLeft, talonFrontRight, talonRearRight);
 
     Logger.tab
@@ -83,7 +77,7 @@ public class Drive extends Subsystem {
     final DriveJoystick joystick = OperatorInput.driveJoystick;
 
     final double x = joystick.getScaledAxis(JoystickPorts.rightXAxis);
-    final double y = joystick.getScaledAxis(JoystickPorts.rightYAxis);
+    final double y = -joystick.getScaledAxis(JoystickPorts.rightYAxis);
     // Get inverse of trigger turn value because all the motors are inverted
     final double z = OperatorInput.scale(-OperatorInput.triggerTurn());
 
