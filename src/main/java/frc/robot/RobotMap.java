@@ -39,4 +39,6 @@ public class RobotMap {
   // Solenoids
   public static final int randomSolenoid1 = 0;
   public static final int randomSolenoid2 = 1;
+  public static final int randomSolenoid3 = 2;
+  public static final int randomSolenoid4 = 3;
 }

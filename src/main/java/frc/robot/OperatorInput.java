@@ -9,9 +9,7 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.ActivateAllSolenoids;
-import frc.robot.commands.ActivateSolenoid;
 import frc.robot.commands.DeactivateAllSolenoids;
-import frc.robot.commands.DeactivateSolenoid;
 import frc.robot.structures.Config;
 import frc.robot.structures.DriveJoystick;
 import frc.robot.structures.JoystickPorts;
@@ -54,18 +52,9 @@ public class OperatorInput {
   public OperatorInput() {
     if (Config.solenoidsSubsytemEnabled) {
       final JoystickButton aButton = new JoystickButton(driveJoystick, JoystickPorts.aButton);
-      final JoystickButton bButton = new JoystickButton(driveJoystick, JoystickPorts.bButton);
-      final JoystickButton xButton = new JoystickButton(driveJoystick, JoystickPorts.xButton);
-      final JoystickButton yButton = new JoystickButton(driveJoystick, JoystickPorts.yButton);
 
-      aButton.whenPressed(new ActivateSolenoid(Robot.solenoidsSubsytem.randomSolenoid1));
-      aButton.whenReleased(new DeactivateSolenoid(Robot.solenoidsSubsytem.randomSolenoid1));
-      
-      bButton.whenPressed(new ActivateAllSolenoids());
-      bButton.whenReleased(new DeactivateAllSolenoids());
-
-      xButton.whenPressed(new ActivateSolenoid(Robot.solenoidsSubsytem.randomSolenoid1));
-      yButton.whenPressed(new DeactivateSolenoid(Robot.solenoidsSubsytem.randomSolenoid1));
+      aButton.whenPressed(new ActivateAllSolenoids());
+      aButton.whenReleased(new DeactivateAllSolenoids());
     }
   }
 
@@ -87,8 +76,8 @@ public class OperatorInput {
   }
 
   /**
-   * Scales a value to be more precise at lower values. Used for driving.
-   * Cubes the joystick value.
+   * Scales a value to be more precise at lower values. Used for driving. Cubes
+   * the joystick value.
    * 
    * @return scaled value
    */
