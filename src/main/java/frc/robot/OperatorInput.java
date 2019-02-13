@@ -82,6 +82,7 @@ public class OperatorInput {
    * @return scaled value
    */
   public static double scale(double value) {
+    // Cube the value
     return Math.pow(value, 3);
   }
 }

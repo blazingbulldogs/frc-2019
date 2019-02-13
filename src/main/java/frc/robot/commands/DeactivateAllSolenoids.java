@@ -9,7 +9,7 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import frc.robot.Robot;
-import frc.robot.commands.DeactivateSolenoid;
+import frc.robot.commands.DeactivateDoubleSolenoid;
 
 public class DeactivateAllSolenoids extends CommandGroup {
   /**
@@ -33,7 +33,6 @@ public class DeactivateAllSolenoids extends CommandGroup {
     // a CommandGroup containing them would require both the chassis and the
     // arm.
 
-    addParallel(new DeactivateSolenoid(Robot.solenoidsSubsytem.randomSolenoid1));
-    addParallel(new DeactivateSolenoid(Robot.solenoidsSubsytem.randomSolenoid2));
+    addParallel(new DeactivateDoubleSolenoid(Robot.solenoidsSubsytem.doubleSolenoid1));
   }
 }
