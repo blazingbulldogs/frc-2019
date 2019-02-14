@@ -13,22 +13,14 @@ public final class JoystickPorts {
   // Triggers and trigger buttons
   public static final int leftBumper = 5;
   public static final int rightBumper = 6;
-  public static final int leftTrigger = 7;
-  public static final int rightTrigger = 8;
 
   // Special buttons
-  public static final int backButton = 9;
-  public static final int startButton = 10;
+  public static final int backButton = 7;
+  public static final int startButton = 8;
 
   // Joystick presses
-  public static final int leftStick = 11;
-  public static final int rightStick = 12;
-
-  // Directional pad
-  public static final int dpadUp = 13;
-  public static final int dpadDown = 14;
-  public static final int dpadLeft = 15;
-  public static final int dpadRight = 16; 
+  public static final int leftStick = 9;
+  public static final int rightStick = 10;
 
   // Joystick axes
   public static final int leftXAxis = 0;
