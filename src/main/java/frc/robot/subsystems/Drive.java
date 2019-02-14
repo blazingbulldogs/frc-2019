@@ -37,18 +37,18 @@ public class Drive extends Subsystem {
   public final WPI_TalonSRX talonRearRight = new WPI_TalonSRX(RobotMap.talonRearRight);
   public final WPI_TalonSRX talonRearLeft = new WPI_TalonSRX(RobotMap.talonRearLeft);
   public final WPI_TalonSRX talonFrontRight = new WPI_TalonSRX(RobotMap.talonFrontRight);
-  public final WPI_VictorSPX victorFrontLeft = new WPI_VictorSPX(RobotMap.victorFrontLeft);
+  public final WPI_TalonSRX talonFrontLeft = new WPI_TalonSRX(RobotMap.talonFrontLeft);
 
   /**
    * Set up motors and robot drive.
    */
   public Drive() {
-    victorFrontLeft.set(ControlMode.PercentOutput, 0);
+    talonFrontLeft.set(ControlMode.PercentOutput, 0);
     talonFrontRight.set(ControlMode.PercentOutput, 0);
     talonRearLeft.set(ControlMode.PercentOutput, 0);
     talonRearRight.set(ControlMode.PercentOutput, 0);
 
-    robotDrive = new MecanumDrive(victorFrontLeft, talonRearLeft, talonFrontRight, talonRearRight);
+    robotDrive = new MecanumDrive(talonFrontLeft, talonRearLeft, talonFrontRight, talonRearRight);
 
     Logger.tab
       .add("Mecanum Mode", robotDrive)
