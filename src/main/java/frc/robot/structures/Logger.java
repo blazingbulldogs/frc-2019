@@ -49,7 +49,7 @@ public class Logger {
     this.joystickData.setDoubleArray(joystickValues);
 
     this.joyX.setDouble(x);
-    this.joyY.setDouble(y);
+    this.joyY.setDouble(-y);
     this.joyZ.setDouble(z);
   }
 }
