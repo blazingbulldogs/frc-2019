@@ -76,9 +76,9 @@ public class Drive extends Subsystem {
 
     final DriveJoystick joystick = OperatorInput.driveJoystick;
 
-    final double x = joystick.getScaledAxis(JoystickPorts.rightXAxis);
-    final double y = -joystick.getScaledAxis(JoystickPorts.rightYAxis);
-    final double z = OperatorInput.scale(OperatorInput.triggerTurn());
+    final double x = joystick.getScaledAxis(JoystickPorts.leftXAxis);
+    final double y = -joystick.getScaledAxis(JoystickPorts.leftYAxis);
+    final double z = joystick.getScaledAxis(JoystickPorts.rightXAxis);
 
     logger.logJoystick(joystick);
 
