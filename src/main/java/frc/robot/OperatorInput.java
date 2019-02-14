@@ -51,10 +51,10 @@ public class OperatorInput {
    */
   public OperatorInput() {
     if (Config.solenoidsSubsytemEnabled) {
-      final JoystickButton aButton = new JoystickButton(driveJoystick, JoystickPorts.aButton);
+      final JoystickButton rightTrigger = new JoystickButton(driveJoystick, JoystickPorts.rightTriggerAxis);
 
-      aButton.whenPressed(new ActivateAllSolenoids());
-      aButton.whenReleased(new DeactivateAllSolenoids());
+      rightTrigger.whenActive(new ActivateAllSolenoids());
+      rightTrigger.whenInactive(new DeactivateAllSolenoids());
     }
   }
 
