@@ -41,9 +41,9 @@ public class Logger {
    * @param joystick Joystick to log
    */
   public final void logJoystick(DriveJoystick joystick) {
-    final double x = joystick.getScaledAxis(JoystickPorts.rightXAxis);
-    final double y = joystick.getScaledAxis(JoystickPorts.rightYAxis);
-    final double z = OperatorInput.scale(OperatorInput.triggerTurn());
+    final double x = joystick.getScaledAxis(JoystickPorts.leftXAxis);
+    final double y = joystick.getScaledAxis(JoystickPorts.leftYAxis);
+    final double z = joystick.getScaledAxis(JoystickPorts.rightXAxis);
 
     double[] joystickValues = new double[] { x, y, z };
 
