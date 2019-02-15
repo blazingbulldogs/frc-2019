@@ -25,7 +25,7 @@ public class Gyro extends Subsystem {
    * NavX gyroscope.
    */
   public Gyro() {
-    ahrs = new AHRS(SerialPort.Port.kUSB1);
+    ahrs = new AHRS(SerialPort.Port.kMXP);
 
     Logger.tab.add("Gyro", ahrs).withWidget(BuiltInWidgets.kGyro);
   }
