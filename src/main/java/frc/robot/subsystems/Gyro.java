@@ -18,15 +18,13 @@ public class Gyro extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
 
-  public AHRS ahrs;
+  public AHRS ahrs = new AHRS(SPI.Port.kMXP);
   public boolean gyroDrive = true;
 
   /**
    * NavX gyroscope.
    */
   public Gyro() {
-    ahrs = new AHRS(SPI.Port.kMXP);
-
     Logger.tab
       .add("Gyro", ahrs)
       .withWidget(BuiltInWidgets.kGyro)
