@@ -5,17 +5,17 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands;
+package frc.robot.commands.solenoids.duo;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import frc.robot.Robot;
-import frc.robot.commands.DeactivateDoubleSolenoid;
+import frc.robot.commands.solenoids.duo.DeactivateDoubleSolenoid;
 
-public class DeactivateAllSolenoids extends CommandGroup {
+public class DeactivateAllDoubleSolenoids extends CommandGroup {
   /**
    * Add your docs here.
    */
-  public DeactivateAllSolenoids() {
+  public DeactivateAllDoubleSolenoids() {
     // Add Commands here:
     // e.g. addSequential(new Command1());
     // addSequential(new Command2());

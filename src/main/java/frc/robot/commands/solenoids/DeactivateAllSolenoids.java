@@ -5,17 +5,17 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands;
+package frc.robot.commands.solenoids;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import frc.robot.Robot;
-import frc.robot.commands.ActivateDoubleSolenoid;
+import frc.robot.commands.solenoids.DeactivateSolenoid;
 
-public class ActivateAllSolenoids extends CommandGroup {
+public class DeactivateAllSolenoids extends CommandGroup {
   /**
-   * Add your docs here.
+   * Deactivate all solenoids.
    */
-  public ActivateAllSolenoids() {
+  public DeactivateAllSolenoids() {
     // Add Commands here:
     // e.g. addSequential(new Command1());
     // addSequential(new Command2());
@@ -33,6 +33,7 @@ public class ActivateAllSolenoids extends CommandGroup {
     // a CommandGroup containing them would require both the chassis and the
     // arm.
 
-    addParallel(new ActivateDoubleSolenoid(Robot.solenoidsSubsytem.doubleSolenoid1));
+    addParallel(new DeactivateSolenoid(Robot.solenoidsSubsytem.solenoid1));
+    addParallel(new DeactivateSolenoid(Robot.solenoidsSubsytem.solenoid2));
   }
 }

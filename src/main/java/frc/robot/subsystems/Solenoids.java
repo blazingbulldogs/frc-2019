@@ -7,6 +7,7 @@
 
 package frc.robot.subsystems;
 
+import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
@@ -15,6 +16,8 @@ public class Solenoids extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
   public final DoubleSolenoid doubleSolenoid1 = new DoubleSolenoid(RobotMap.doubleSolenoid1, RobotMap.doubleSolenoid2);
+  public final Solenoid solenoid1 = new Solenoid(RobotMap.randomSolenoid1);
+  public final Solenoid solenoid2 = new Solenoid(RobotMap.randomSolenoid2);
 
   public Solenoids() {
   }
@@ -24,5 +27,4 @@ public class Solenoids extends Subsystem {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new SolenoidTime(randomSolenoid1));
   }
-
 }

@@ -5,29 +5,28 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands;
+package frc.robot.commands.solenoids;
 
-import edu.wpi.first.wpilibj.DoubleSolenoid;
-import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
+import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.InstantCommand;
 
-public class ActivateDoubleSolenoid extends InstantCommand {
-  private DoubleSolenoid sol;
+public class DeactivateSolenoid extends InstantCommand {
+  private Solenoid sol;
 
   /**
-   * Activate a solenoid.
+   * Deactivate a solenoid.
    */
-  public ActivateDoubleSolenoid(DoubleSolenoid toActivate) {
+  public DeactivateSolenoid(Solenoid toDeactivate) {
     super();
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
 
-    sol = toActivate;
+    sol = toDeactivate;
   }
 
   // Called once when the command executes
   @Override
   protected void initialize() {
-    sol.set(Value.kForward);
+    sol.set(false);
   }
 }
