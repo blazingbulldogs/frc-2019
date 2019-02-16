@@ -9,7 +9,7 @@ package frc.robot.subsystems;
 
 import com.kauailabs.navx.frc.AHRS;
 
-import edu.wpi.first.wpilibj.SerialPort;
+import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.shuffleboard.BuiltInWidgets;
 import frc.robot.structures.Logger;
@@ -25,7 +25,7 @@ public class Gyro extends Subsystem {
    * NavX gyroscope.
    */
   public Gyro() {
-    ahrs = new AHRS(SerialPort.Port.kMXP);
+    ahrs = new AHRS(SPI.Port.kMXP);
 
     Logger.tab.add("Gyro", ahrs).withWidget(BuiltInWidgets.kGyro);
   }
