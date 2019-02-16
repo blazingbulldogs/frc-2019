@@ -27,7 +27,11 @@ public class Gyro extends Subsystem {
   public Gyro() {
     ahrs = new AHRS(SPI.Port.kMXP);
 
-    Logger.tab.add("Gyro", ahrs).withWidget(BuiltInWidgets.kGyro);
+    Logger.tab
+      .add("Gyro", ahrs)
+      .withWidget(BuiltInWidgets.kGyro)
+      .withPosition(11, 2)
+      .withSize(2, 2);
   }
 
   @Override
