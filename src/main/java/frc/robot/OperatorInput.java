@@ -8,6 +8,8 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import frc.robot.commands.solenoids.ActivateAllSolenoids;
+import frc.robot.commands.solenoids.DeactivateAllSolenoids;
 import frc.robot.commands.solenoids.duo.ActivateAllDoubleSolenoids;
 import frc.robot.commands.solenoids.duo.DeactivateAllDoubleSolenoids;
 import frc.robot.structures.Config;
@@ -51,10 +53,14 @@ public class OperatorInput {
    */
   public OperatorInput() {
     if (Config.solenoidsSubsytemEnabled) {
-      final JoystickButton rightTrigger = new JoystickButton(driveJoystick, JoystickPorts.rightTriggerAxis);
+      final JoystickButton leftBmp = new JoystickButton(driveJoystick, JoystickPorts.leftBumper);
+      final JoystickButton rightBmp = new JoystickButton(driveJoystick, JoystickPorts.rightBumper);
 
-      rightTrigger.whenActive(new ActivateAllDoubleSolenoids());
-      rightTrigger.whenInactive(new DeactivateAllDoubleSolenoids());
+      rightBmp.whenPressed(new ActivateAllSolenoids());
+      rightBmp.whenReleased(new DeactivateAllSolenoids());
+
+      leftBmp.whenPressed(new ActivateAllDoubleSolenoids());
+      leftBmp.whenReleased(new DeactivateAllDoubleSolenoids());
     }
   }
 
