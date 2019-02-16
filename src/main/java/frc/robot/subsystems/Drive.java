@@ -50,7 +50,7 @@ public class Drive extends Subsystem {
     robotDrive = new MecanumDrive(talonFrontLeft, talonRearLeft, talonFrontRight, talonRearRight);
 
     Logger.tab
-      .add("Mecanum Mode", robotDrive)
+      .add("Mecanum Drive Train", robotDrive)
       .withSize(4, 2)
       .withPosition(0, 0)
       .withWidget(BuiltInWidgets.kMecanumDrive);
