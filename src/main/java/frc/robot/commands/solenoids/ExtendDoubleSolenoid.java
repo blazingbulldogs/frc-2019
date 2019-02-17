@@ -15,7 +15,7 @@ public class ExtendDoubleSolenoid extends InstantCommand {
   private DoubleSolenoid sol;
 
   /**
-   * Activate a solenoid.
+   * Extend a double solenoid.
    */
   public ExtendDoubleSolenoid(DoubleSolenoid toExtend) {
     super();

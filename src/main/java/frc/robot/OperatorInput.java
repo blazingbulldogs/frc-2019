@@ -12,7 +12,6 @@ import frc.robot.commands.gyroscope.ZeroGyroYaw;
 
 import frc.robot.commands.solenoids.ExtendDoubleSolenoid;
 import frc.robot.commands.solenoids.RetractDoubleSolenoid;
-import frc.robot.commands.solenoids.DeactivateDoubleSolenoid;
 
 import frc.robot.structures.Config;
 import frc.robot.structures.DriveJoystick;
@@ -60,12 +59,12 @@ public class OperatorInput {
       final JoystickButton rightBmp = new JoystickButton(driveJoystick, JoystickPorts.rightBumper);
 
       // Hatch pusher plaste
-      rightBmp.whenPressed(new ExtendDoubleSolenoid(Robot.solenoidsSubsystem.hatchSolenoid));
-      rightBmp.whenReleased(new RetractDoubleSolenoid(Robot.solenoidsSubsystem.hatchSolenoid));
+      rightBmp.whenPressed(new RetractDoubleSolenoid(Robot.solenoidsSubsystem.hatchSolenoid));
+      rightBmp.whenReleased(new ExtendDoubleSolenoid(Robot.solenoidsSubsystem.hatchSolenoid));
 
       // Cargo dumper
-      leftBmp.whenPressed(new ExtendDoubleSolenoid(Robot.solenoidsSubsystem.cargoSolenoid));
-      leftBmp.whenReleased(new DeactivateDoubleSolenoid(Robot.solenoidsSubsystem.cargoSolenoid));
+      leftBmp.whenPressed(new RetractDoubleSolenoid(Robot.solenoidsSubsystem.cargoSolenoid));
+      leftBmp.whenReleased(new ExtendDoubleSolenoid(Robot.solenoidsSubsystem.cargoSolenoid));
     }
     if (Config.gyroSubsystemEnabled) {
       final JoystickButton bButton = new JoystickButton(driveJoystick, JoystickPorts.bButton);

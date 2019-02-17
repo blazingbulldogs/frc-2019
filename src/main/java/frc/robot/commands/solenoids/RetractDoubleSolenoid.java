@@ -15,7 +15,7 @@ public class RetractDoubleSolenoid extends InstantCommand {
   private DoubleSolenoid sol;
 
   /**
-   * Deactivate a solenoid.
+   * Retract a double solenoid.
    */
   public RetractDoubleSolenoid(DoubleSolenoid toRetract) {
     super();
@@ -28,6 +28,6 @@ public class RetractDoubleSolenoid extends InstantCommand {
   // Called once when the command executes
   @Override
   protected void initialize() {
-    sol.set(Value.kOff);
+    sol.set(Value.kReverse);
   }
 }
