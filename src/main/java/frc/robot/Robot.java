@@ -26,7 +26,7 @@ import frc.robot.subsystems.Solenoids;
  */
 public class Robot extends TimedRobot {
   public static Drive driveSubsystem;
-  public static Gyro gyroSubsystem; // TODO fix mispelling
+  public static Gyro gyroSubsystem;
   public static Solenoids solenoidsSubsystem;
 
   Robot() {
