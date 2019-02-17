@@ -9,9 +9,9 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.gyroscope.ZeroGyroYaw;
-
-import frc.robot.commands.solenoids.ExtendDoubleSolenoid;
-import frc.robot.commands.solenoids.RetractDoubleSolenoid;
+import frc.robot.commands.solenoids.CargoRoutine;
+import frc.robot.commands.solenoids.HatchPull;
+import frc.robot.commands.solenoids.HatchPush;
 
 import frc.robot.structures.Config;
 import frc.robot.structures.DriveJoystick;
@@ -59,12 +59,11 @@ public class OperatorInput {
       final JoystickButton rightBmp = new JoystickButton(driveJoystick, JoystickPorts.rightBumper);
 
       // Hatch pusher plaste
-      rightBmp.whenPressed(new RetractDoubleSolenoid(Robot.solenoidsSubsystem.hatchSolenoid));
-      rightBmp.whenReleased(new ExtendDoubleSolenoid(Robot.solenoidsSubsystem.hatchSolenoid));
+      rightBmp.whenPressed(new HatchPush());
+      rightBmp.whenReleased(new HatchPull());
 
       // Cargo dumper
-      leftBmp.whenPressed(new RetractDoubleSolenoid(Robot.solenoidsSubsystem.cargoSolenoid));
-      leftBmp.whenReleased(new ExtendDoubleSolenoid(Robot.solenoidsSubsystem.cargoSolenoid));
+      leftBmp.whenPressed(new CargoRoutine());
     }
     if (Config.gyroSubsystemEnabled) {
       final JoystickButton bButton = new JoystickButton(driveJoystick, JoystickPorts.bButton);
