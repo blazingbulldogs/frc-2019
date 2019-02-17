@@ -13,7 +13,6 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
 
 public class Solenoids extends Subsystem {
-
   public final DoubleSolenoid hatchSolenoid = new DoubleSolenoid(RobotMap.hatchSolenoid1, RobotMap.hatchSolenoid2);
   public final DoubleSolenoid cargoSolenoid = new DoubleSolenoid(RobotMap.cargoSolenoid1, RobotMap.cargoSolenoid2);
 
