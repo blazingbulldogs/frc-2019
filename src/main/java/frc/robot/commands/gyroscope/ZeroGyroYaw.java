@@ -8,10 +8,9 @@
 package frc.robot.commands.gyroscope;
 
 import edu.wpi.first.wpilibj.command.InstantCommand;
-import frc.robot.subsystems.Gyro;
+import frc.robot.Robot;
 
 public class ZeroGyroYaw extends InstantCommand {
-  private Gyro gyro;
 
   /**
    * Sets the gyroscopes yaw to 0.
@@ -25,6 +24,6 @@ public class ZeroGyroYaw extends InstantCommand {
   // Called once when the command executes
   @Override
   protected void initialize() {
-    gyro.ahrs.zeroYaw();
+   Robot.gyroSubsystem.ahrs.zeroYaw();
   }
 }
