@@ -5,32 +5,26 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands;
+package frc.robot.commands.gyroscope;
 
 import edu.wpi.first.wpilibj.command.InstantCommand;
 import frc.robot.subsystems.Gyro;
 
-/**
- * Add your docs here.
- */
-public class GyroZero extends InstantCommand {
+public class ZeroGyroYaw extends InstantCommand {
   private Gyro gyro;
+
   /**
-   * Add your docs here.
+   * Sets the gyroscopes yaw to 0.
    */
-  public GyroZero() {
+  public ZeroGyroYaw() {
     super();
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-
-    
   }
 
   // Called once when the command executes
   @Override
   protected void initialize() {
-      gyro.ahrs.zeroYaw();
-
+    gyro.ahrs.zeroYaw();
   }
-
 }

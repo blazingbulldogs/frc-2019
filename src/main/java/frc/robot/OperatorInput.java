@@ -8,6 +8,7 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import frc.robot.commands.gyroscope.ZeroGyroYaw;
 import frc.robot.commands.solenoids.ActivateAllSolenoids;
 import frc.robot.commands.solenoids.DeactivateAllSolenoids;
 import frc.robot.commands.solenoids.duo.ActivateAllDoubleSolenoids;
@@ -15,8 +16,6 @@ import frc.robot.commands.solenoids.duo.DeactivateAllDoubleSolenoids;
 import frc.robot.structures.Config;
 import frc.robot.structures.DriveJoystick;
 import frc.robot.structures.JoystickPorts;
-import frc.robot.subsystems.Drive;
-import frc.robot.commands.GyroZero;;
 
 public class OperatorInput {
   //// CREATING BUTTONS
@@ -67,7 +66,7 @@ public class OperatorInput {
     if (Config.gyroSubsytemEnabled) {
       final JoystickButton bButton = new JoystickButton(driveJoystick, JoystickPorts.bButton);
 
-      bButton.whenPressed(new GyroZero());
+      bButton.whenPressed(new ZeroGyroYaw());
     }
   }
 
