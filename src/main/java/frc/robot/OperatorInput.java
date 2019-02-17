@@ -15,6 +15,9 @@ import frc.robot.commands.solenoids.duo.DeactivateAllDoubleSolenoids;
 import frc.robot.structures.Config;
 import frc.robot.structures.DriveJoystick;
 import frc.robot.structures.JoystickPorts;
+import frc.robot.subsystems.Drive;
+import frc.robot.subsystems.Gyro;
+import frc.robot.commands.GyroZero;;
 
 public class OperatorInput {
   //// CREATING BUTTONS
@@ -61,6 +64,11 @@ public class OperatorInput {
 
       leftBmp.whenPressed(new ActivateAllDoubleSolenoids());
       leftBmp.whenReleased(new DeactivateAllDoubleSolenoids());
+    }
+    if (Config.gyroSubsytemEnabled) {
+      final JoystickButton bButton = new JoystickButton(driveJoystick, JoystickPorts.bButton);
+
+      bButton.whenPressed(new GyroZero(true));
     }
   }
 
