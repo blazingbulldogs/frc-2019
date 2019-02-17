@@ -15,11 +15,10 @@ import frc.robot.subsystems.Gyro;
  */
 public class GyroZero extends InstantCommand {
   private Gyro gyro;
-  boolean toZero;
   /**
    * Add your docs here.
    */
-  public GyroZero(Boolean toZero) {
+  public GyroZero() {
     super();
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
@@ -30,9 +29,7 @@ public class GyroZero extends InstantCommand {
   // Called once when the command executes
   @Override
   protected void initialize() {
-    if (toZero = true){
       gyro.ahrs.zeroYaw();
-    }
 
   }
 

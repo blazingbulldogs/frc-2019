@@ -16,7 +16,6 @@ import frc.robot.structures.Config;
 import frc.robot.structures.DriveJoystick;
 import frc.robot.structures.JoystickPorts;
 import frc.robot.subsystems.Drive;
-import frc.robot.subsystems.Gyro;
 import frc.robot.commands.GyroZero;;
 
 public class OperatorInput {
@@ -68,7 +67,7 @@ public class OperatorInput {
     if (Config.gyroSubsytemEnabled) {
       final JoystickButton bButton = new JoystickButton(driveJoystick, JoystickPorts.bButton);
 
-      bButton.whenPressed(new GyroZero(true));
+      bButton.whenPressed(new GyroZero());
     }
   }
 
