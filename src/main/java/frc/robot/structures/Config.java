@@ -9,6 +9,6 @@ public final class Config {
   // Enable certain subsytems
   public static final boolean driveSubsytemEnabled = true;
   public static final boolean solenoidsSubsytemEnabled = true;
-  public static final boolean gyroSubsytemEnabled = false;
+  public static final boolean gyroSubsytemEnabled = true;
   public static final boolean camerasEnabled = false;
 }
