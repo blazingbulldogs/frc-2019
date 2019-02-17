@@ -25,19 +25,19 @@ import frc.robot.subsystems.Solenoids;
  * project.
  */
 public class Robot extends TimedRobot {
-  public static Drive driveSubsytem;
-  public static Gyro gyroSubsytem;
-  public static Solenoids solenoidsSubsytem;
+  public static Drive driveSubsystem;
+  public static Gyro gyroSubsystem; // TODO fix mispelling
+  public static Solenoids solenoidsSubsystem;
 
   Robot() {
-    if (Config.driveSubsytemEnabled) {
-      driveSubsytem = new Drive();
+    if (Config.driveSubsystemEnabled) {
+      driveSubsystem = new Drive();
     }
-    if (Config.gyroSubsytemEnabled) {
-      gyroSubsytem = new Gyro();
+    if (Config.gyroSubsystemEnabled) {
+      gyroSubsystem = new Gyro();
     }
-    if (Config.solenoidsSubsytemEnabled) {
-      solenoidsSubsytem = new Solenoids();
+    if (Config.solenoidsSubsystemEnabled) {
+      solenoidsSubsystem = new Solenoids();
     }
   }
 

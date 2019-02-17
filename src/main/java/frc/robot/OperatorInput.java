@@ -9,13 +9,15 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.gyroscope.ZeroGyroYaw;
-import frc.robot.commands.solenoids.ActivateAllSolenoids;
-import frc.robot.commands.solenoids.DeactivateAllSolenoids;
-import frc.robot.commands.solenoids.duo.ActivateAllDoubleSolenoids;
-import frc.robot.commands.solenoids.duo.DeactivateAllDoubleSolenoids;
+
+import frc.robot.commands.solenoids.ExtendDoubleSolenoid;
+import frc.robot.commands.solenoids.RetractDoubleSolenoid;
+import frc.robot.commands.solenoids.DeactivateDoubleSolenoid;
+
 import frc.robot.structures.Config;
 import frc.robot.structures.DriveJoystick;
 import frc.robot.structures.JoystickPorts;
+import frc.robot.subsystems.Solenoids;
 
 public class OperatorInput {
   //// CREATING BUTTONS
@@ -53,17 +55,19 @@ public class OperatorInput {
    * interface to the commands and command groups that allow control of the robot.
    */
   public OperatorInput() {
-    if (Config.solenoidsSubsytemEnabled) {
+    if (Config.solenoidsSubsystemEnabled) {
       final JoystickButton leftBmp = new JoystickButton(driveJoystick, JoystickPorts.leftBumper);
       final JoystickButton rightBmp = new JoystickButton(driveJoystick, JoystickPorts.rightBumper);
 
-      rightBmp.whenPressed(new ActivateAllSolenoids());
-      rightBmp.whenReleased(new DeactivateAllSolenoids());
+      // Hatch pusher plaste
+      rightBmp.whenPressed(new ExtendDoubleSolenoid(Robot.solenoidsSubsystem.hatchSolenoid));
+      rightBmp.whenReleased(new RetractDoubleSolenoid(Robot.solenoidsSubsystem.hatchSolenoid));
 
-      leftBmp.whenPressed(new ActivateAllDoubleSolenoids());
-      leftBmp.whenReleased(new DeactivateAllDoubleSolenoids());
+      // Cargo dumper
+      leftBmp.whenPressed(new ExtendDoubleSolenoid(Robot.solenoidsSubsystem.cargoSolenoid));
+      leftBmp.whenReleased(new DeactivateDoubleSolenoid(Robot.solenoidsSubsystem.cargoSolenoid));
     }
-    if (Config.gyroSubsytemEnabled) {
+    if (Config.gyroSubsystemEnabled) {
       final JoystickButton bButton = new JoystickButton(driveJoystick, JoystickPorts.bButton);
 
       bButton.whenPressed(new ZeroGyroYaw());

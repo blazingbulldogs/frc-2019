@@ -67,8 +67,8 @@ public class Drive extends Subsystem {
     double angle = 0;
     boolean gyroDrive = false;
 
-    if (Config.gyroSubsytemEnabled) {
-      final Gyro gyro = Robot.gyroSubsytem;
+    if (Config.gyroSubsystemEnabled) {
+      final Gyro gyro = Robot.gyroSubsystem;
       angle = gyro.ahrs.getAngle();
       gyroDrive = gyro.gyroDrive;
     }
