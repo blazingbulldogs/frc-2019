@@ -6,7 +6,7 @@ package frc.robot.structures;
 public final class Config {
   public static final String jetsonIP = "http://10.5.81.19";
 
-  // Enable certain subsytems
+  // Enable certain subsystems
   public static final boolean driveSubsystemEnabled = true;
   public static final boolean solenoidsSubsystemEnabled = true;
   public static final boolean gyroSubsystemEnabled = true;
