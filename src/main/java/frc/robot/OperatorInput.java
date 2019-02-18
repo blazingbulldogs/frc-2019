@@ -17,7 +17,6 @@ import frc.robot.commands.solenoids.HatchPush;
 import frc.robot.structures.Config;
 import frc.robot.structures.DriveJoystick;
 import frc.robot.structures.JoystickPorts;
-import frc.robot.subsystems.Solenoids;
 
 public class OperatorInput {
   //// CREATING BUTTONS
@@ -50,13 +49,13 @@ public class OperatorInput {
 
   public static final DriveJoystick driveJoystick = new DriveJoystick(RobotMap.joystick);
   public static double power = 3;
+
   /**
    * This class is the glue that binds the controls on the physical operator
    * interface to the commands and command groups that allow control of the robot.
    */
   public OperatorInput() {
-    
-    if (Config.driveSubsystemEnabled){
+    if (Config.driveSubsystemEnabled) {
       final JoystickButton xButton = new JoystickButton(driveJoystick, JoystickPorts.xButton);
 
       xButton.whenActive(new JoystickPower(true));
