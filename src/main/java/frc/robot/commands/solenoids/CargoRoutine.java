@@ -11,14 +11,13 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 import frc.robot.commands.Wait;
 
 public class CargoRoutine extends CommandGroup {
-  /**
-   * Sequence of commands to dump cargo
-   */
-
   private Wait wait1 = new Wait(7);
   private Wait wait2 = new Wait(15);
   private Wait wait3 = new Wait(15);
 
+  /**
+   * Sequence of commands to dump cargo.
+   */
   public CargoRoutine() {
     setTimeout(3.0);
 
@@ -35,7 +34,7 @@ public class CargoRoutine extends CommandGroup {
     addSequential(new CargoReset());
   }
 
-  private void reset(){
+  private void reset() {
     wait1.reset();
     wait2.reset();
     wait3.reset();
@@ -47,5 +46,4 @@ public class CargoRoutine extends CommandGroup {
     System.out.println("CargoRoutine done");
     reset();
   }
-
 }
