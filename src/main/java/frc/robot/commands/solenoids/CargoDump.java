@@ -12,6 +12,11 @@ import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import frc.robot.Robot;
 
 public class CargoDump extends MoveDoubleSolenoid {
-  protected DoubleSolenoid sol(){return Robot.solenoidsSubsystem.cargoSolenoid; }
-  protected Value val(){ return Value.kReverse; }
+  protected DoubleSolenoid sol() {
+    return Robot.solenoidsSubsystem.cargoSolenoid;
+  }
+
+  protected Value val() {
+    return Value.kReverse;
+  }
 }

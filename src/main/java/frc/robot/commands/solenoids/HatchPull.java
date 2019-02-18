@@ -12,6 +12,11 @@ import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import frc.robot.Robot;
 
 public class HatchPull extends MoveDoubleSolenoid {
-  protected DoubleSolenoid sol(){return Robot.solenoidsSubsystem.hatchSolenoid; }
-  protected Value val(){ return Value.kForward; }
+  protected DoubleSolenoid sol() {
+    return Robot.solenoidsSubsystem.hatchSolenoid;
+  }
+
+  protected Value val() {
+    return Value.kForward;
+  }
 }
