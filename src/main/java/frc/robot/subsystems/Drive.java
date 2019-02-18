@@ -34,26 +34,21 @@ public class Drive extends Subsystem {
   private final Logger logger = new Logger();
 
   // Motor controllers
-  public final Spark talonFrontLeft = new Spark(RobotMap.talonFrontLeft);
-  public final Spark talonRearLeft = new Spark(RobotMap.talonRearLeft);
-  SpeedControllerGroup leftSparks = new SpeedControllerGroup(talonFrontLeft, talonRearLeft);
+  public final Spark sparkFrontLeft = new Spark(RobotMap.sparkFrontLeft);
+  public final Spark sparkRearLeft = new Spark(RobotMap.sparkRearLeft);
+  SpeedControllerGroup leftSparks = new SpeedControllerGroup(sparkFrontLeft, sparkRearLeft);
 
-  public final Spark talonFrontRight = new Spark(RobotMap.talonFrontRight);
-  public final Spark talonRearRight = new Spark(RobotMap.talonRearRight);
-  SpeedControllerGroup rightSparks = new SpeedControllerGroup(talonFrontRight, talonRearRight);
+  public final Spark sparkFrontRight = new Spark(RobotMap.sparkFrontRight);
+  public final Spark sparkRearRight = new Spark(RobotMap.sparkRearRight);
+  SpeedControllerGroup rightSparks = new SpeedControllerGroup(sparkFrontRight, sparkRearRight);
   /**
    * Set up motors and robot drive.
    */
   public Drive() {
-    // talonFrontLeft.set(ControlMode.PercentOutput, 0);
-    // talonFrontRight.set(ControlMode.PercentOutput, 0);
-    // talonRearLeft.set(ControlMode.PercentOutput, 0);
-    // talonRearRight.set(ControlMode.PercentOutput, 0);
-
     robotDrive = new DifferentialDrive(leftSparks, rightSparks);
 
     Logger.tab
-      .add("Mecanum Drive Train", robotDrive)
+      .add("Differential Drive Train", robotDrive)
       .withSize(4, 2)
       .withPosition(0, 0)
       .withWidget(BuiltInWidgets.kDifferentialDrive);
