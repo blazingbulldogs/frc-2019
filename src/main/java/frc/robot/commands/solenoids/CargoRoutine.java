@@ -14,19 +14,38 @@ public class CargoRoutine extends CommandGroup {
   /**
    * Sequence of commands to dump cargo
    */
+
+  private Wait wait1 = new Wait(7);
+  private Wait wait2 = new Wait(15);
+  private Wait wait3 = new Wait(15);
+
   public CargoRoutine() {
+    setTimeout(3.0);
 
     addSequential(new HatchPush());
 
-    addSequential(new Wait(0.25));
+    addSequential(wait1);
 
     addSequential(new CargoDump());
 
-    addSequential(new Wait(0.5));
+    addSequential(wait2);
 
-    addParallel(new CargoReset());
     addSequential(new HatchPull());
+    addSequential(wait3);
+    addSequential(new CargoReset());
+  }
 
+  private void reset(){
+    wait1.reset();
+    wait2.reset();
+    wait3.reset();
+  }
+
+  @Override
+  protected void end() {
+    super.end();
+    System.out.println("CargoRoutine done");
+    reset();
   }
 
 }

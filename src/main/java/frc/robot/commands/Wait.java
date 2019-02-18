@@ -10,13 +10,25 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 
 public class Wait extends Command {
-  public Wait(double timeoutInseconds) {
-    setTimeout(timeoutInseconds);
+  private int waitUntil = 0;
+  private int ticksSeen = 0;
+  public Wait(int ticks) {
+    waitUntil = ticks;
+  }
+
+  public void reset(){
+    ticksSeen = 0;
+  }
+
+  @Override
+  protected void execute() {
+    super.execute();
+    ticksSeen++;
   }
 
   @Override
   protected boolean isFinished() {
-    return false;
+    return ticksSeen >= waitUntil;
   }
 
   @Override
