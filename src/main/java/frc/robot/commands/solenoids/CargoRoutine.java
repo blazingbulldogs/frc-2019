@@ -9,6 +9,8 @@ package frc.robot.commands.solenoids;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import frc.robot.commands.Wait;
+import frc.robot.Robot;
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 
 public class CargoRoutine extends CommandGroup {
   private Wait wait1 = new Wait(7);
@@ -21,17 +23,26 @@ public class CargoRoutine extends CommandGroup {
   public CargoRoutine() {
     setTimeout(3.0);
 
-    addSequential(new HatchPush());
+    // Push hatch
+    addSequential(new MoveDoubleSolenoid(Robot.solenoidsSubsystem.hatchSolenoid, Value.kReverse));
 
+    // Wait 7 ticks
     addSequential(wait1);
 
-    addSequential(new CargoDump());
+    // Dump cargo
+    addSequential(new MoveDoubleSolenoid(Robot.solenoidsSubsystem.cargoSolenoid, Value.kReverse));
 
+    // Wait 15 ticks
     addSequential(wait2);
 
-    addSequential(new HatchPull());
+    // Pull hatch
+    addSequential(new MoveDoubleSolenoid(Robot.solenoidsSubsystem.hatchSolenoid, Value.kForward));
+
+    // Wait 15 ticks
     addSequential(wait3);
-    addSequential(new CargoReset());
+    
+    // Reset cargo
+    addSequential(new MoveDoubleSolenoid(Robot.solenoidsSubsystem.cargoSolenoid, Value.kForward));
   }
 
   private void reset() {

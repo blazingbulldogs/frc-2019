@@ -10,14 +10,26 @@ package frc.robot.commands.solenoids;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.InstantCommand;
+  
+public class MoveDoubleSolenoid extends InstantCommand {
+  private DoubleSolenoid sol;
+  private Value val;
 
-abstract public class MoveDoubleSolenoid extends InstantCommand {
-  abstract protected DoubleSolenoid sol();
-  abstract protected Value val();
+  /**
+   * Move a double solenoid.
+   */
+  public MoveDoubleSolenoid(DoubleSolenoid toMove, Value value) {
+    super();
+    // Use requires() here to declare subsystem dependencies
+    // eg. requires(chassis);
+    sol = toMove;
+    val = value;
+  }
 
   // Called once when the command executes
   @Override
   protected void initialize() {
-    sol().set(val());
+    sol.set(val);
   }
+
 }
