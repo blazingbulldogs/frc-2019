@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.command.InstantCommand;
 import frc.robot.OperatorInput;
 
 public class JoystickPower extends InstantCommand {
-  boolean powerChange;
+  boolean powerChange = false;
 
   /**
    * Toggle the power value of the joystick.
