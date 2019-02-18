@@ -7,17 +7,15 @@
 
 package frc.robot.commands;
 
-import frc.robot.OperatorInput;
 import edu.wpi.first.wpilibj.command.InstantCommand;
+import frc.robot.OperatorInput;
 
-/**
- * Add your docs here.
- */
 public class JoystickPower extends InstantCommand {
-  /**
-   * Add your docs here.
-   */
   boolean powerChange;
+
+  /**
+   * Toggle the power value of the joystick.
+   */
   public JoystickPower(boolean toSlow) {
     super();
     // Use requires() here to declare subsystem dependencies
@@ -28,12 +26,6 @@ public class JoystickPower extends InstantCommand {
   // Called once when the command executes
   @Override
   protected void initialize() {
-    if (powerChange = true){
-      OperatorInput.power = 1;
-    }
-    if (powerChange = false){
-      OperatorInput.power = 3;
-    }
+    OperatorInput.power = powerChange ? 1 : 3;
   }
-
 }
