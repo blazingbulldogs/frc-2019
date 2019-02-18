@@ -72,7 +72,7 @@ public class OperatorInput {
       // rightBmp.whenReleased(new MoveDoubleSolenoid(hatchSolenoid, Value.kForward));
 
       // Cargo dumper
-      leftBmp.whenPressed(new CargoRoutine());
+      // leftBmp.whenPressed(new CargoRoutine());
     }
     if (Config.gyroSubsystemEnabled) {
       final JoystickButton bButton = new JoystickButton(driveJoystick, JoystickPorts.bButton);
