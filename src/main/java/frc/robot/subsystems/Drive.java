@@ -8,10 +8,11 @@
 package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
+import edu.wpi.first.wpilibj.SpeedControllerGroup;
+import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.drive.MecanumDrive;
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.shuffleboard.BuiltInWidgets;
 import frc.robot.OperatorInput;
 import frc.robot.Robot;
@@ -28,32 +29,34 @@ public class Drive extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
 
-  public MecanumDrive robotDrive;
+  public DifferentialDrive robotDrive;
 
   private final Logger logger = new Logger();
 
   // Motor controllers
-  public final WPI_TalonSRX talonRearRight = new WPI_TalonSRX(RobotMap.talonRearRight);
-  public final WPI_TalonSRX talonRearLeft = new WPI_TalonSRX(RobotMap.talonRearLeft);
-  public final WPI_TalonSRX talonFrontRight = new WPI_TalonSRX(RobotMap.talonFrontRight);
-  public final WPI_TalonSRX talonFrontLeft = new WPI_TalonSRX(RobotMap.talonFrontLeft);
+  public final Spark talonFrontLeft = new Spark(RobotMap.talonFrontLeft);
+  public final Spark talonRearLeft = new Spark(RobotMap.talonRearLeft);
+  SpeedControllerGroup leftSparks = new SpeedControllerGroup(talonFrontLeft, talonRearLeft);
 
+  public final Spark talonFrontRight = new Spark(RobotMap.talonFrontRight);
+  public final Spark talonRearRight = new Spark(RobotMap.talonRearRight);
+  SpeedControllerGroup rightSparks = new SpeedControllerGroup(talonFrontRight, talonRearRight);
   /**
    * Set up motors and robot drive.
    */
   public Drive() {
-    talonFrontLeft.set(ControlMode.PercentOutput, 0);
-    talonFrontRight.set(ControlMode.PercentOutput, 0);
-    talonRearLeft.set(ControlMode.PercentOutput, 0);
-    talonRearRight.set(ControlMode.PercentOutput, 0);
+    // talonFrontLeft.set(ControlMode.PercentOutput, 0);
+    // talonFrontRight.set(ControlMode.PercentOutput, 0);
+    // talonRearLeft.set(ControlMode.PercentOutput, 0);
+    // talonRearRight.set(ControlMode.PercentOutput, 0);
 
-    robotDrive = new MecanumDrive(talonFrontLeft, talonRearLeft, talonFrontRight, talonRearRight);
+    robotDrive = new DifferentialDrive(leftSparks, rightSparks);
 
     Logger.tab
       .add("Mecanum Drive Train", robotDrive)
       .withSize(4, 2)
       .withPosition(0, 0)
-      .withWidget(BuiltInWidgets.kMecanumDrive);
+      .withWidget(BuiltInWidgets.kDifferentialDrive);
   }
 
   @Override
@@ -75,16 +78,15 @@ public class Drive extends Subsystem {
 
     final DriveJoystick joystick = OperatorInput.driveJoystick;
 
-    final double x = joystick.getScaledAxis(JoystickPorts.leftXAxis);
     final double y = -joystick.getScaledAxis(JoystickPorts.leftYAxis);
     final double z = joystick.getScaledAxis(JoystickPorts.rightXAxis);
 
     logger.logJoystick(joystick);
 
-    robotDrive.driveCartesian(x, y, z, gyroDrive ? angle : 0);
+    robotDrive.arcadeDrive(y, z);
   }
 
   public void stop() {
-    robotDrive.driveCartesian(0, 0, 0);
+    robotDrive.arcadeDrive(0, 0);
   }
 }
