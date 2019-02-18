@@ -8,6 +8,7 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import frc.robot.commands.JoystickPower;
 import frc.robot.commands.gyroscope.ZeroGyroYaw;
 import frc.robot.commands.solenoids.CargoRoutine;
 import frc.robot.commands.solenoids.HatchPull;
@@ -48,12 +49,19 @@ public class OperatorInput {
   // button.whenReleased(new ExampleCommand());
 
   public static final DriveJoystick driveJoystick = new DriveJoystick(RobotMap.joystick);
-
+  public static double power = 3;
   /**
    * This class is the glue that binds the controls on the physical operator
    * interface to the commands and command groups that allow control of the robot.
    */
   public OperatorInput() {
+    
+    if (Config.driveSubsystemEnabled){
+      final JoystickButton xButton = new JoystickButton(driveJoystick, JoystickPorts.xButton);
+
+      xButton.whenActive(new JoystickPower(true));
+      xButton.whenInactive(new JoystickPower(false));
+    }
     if (Config.solenoidsSubsystemEnabled) {
       final JoystickButton leftBmp = new JoystickButton(driveJoystick, JoystickPorts.leftBumper);
       final JoystickButton rightBmp = new JoystickButton(driveJoystick, JoystickPorts.rightBumper);
@@ -97,6 +105,6 @@ public class OperatorInput {
    */
   public static double scale(double value) {
     // Cube the value
-    return Math.pow(value, 3);
+    return Math.pow(value, power);
   }
 }
