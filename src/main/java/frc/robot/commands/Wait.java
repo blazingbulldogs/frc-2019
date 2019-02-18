@@ -12,11 +12,12 @@ import edu.wpi.first.wpilibj.command.Command;
 public class Wait extends Command {
   private int waitUntil = 0;
   private int ticksSeen = 0;
+
   public Wait(int ticks) {
     waitUntil = ticks;
   }
 
-  public void reset(){
+  public void reset() {
     ticksSeen = 0;
   }
 
