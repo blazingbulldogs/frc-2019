@@ -17,10 +17,6 @@ public class Wait extends Command {
     waitUntil = ticks;
   }
 
-  public void reset() {
-    ticksSeen = 0;
-  }
-
   @Override
   protected void execute() {
     super.execute();
@@ -30,6 +26,11 @@ public class Wait extends Command {
   @Override
   protected boolean isFinished() {
     return ticksSeen >= waitUntil;
+  }
+
+  @Override
+  public void end() {
+    ticksSeen = 0;
   }
 
   @Override

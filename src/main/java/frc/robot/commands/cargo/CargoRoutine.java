@@ -13,10 +13,6 @@ import frc.robot.commands.hatch.HatchPull;
 import frc.robot.commands.hatch.HatchPush;
 
 public class CargoRoutine extends CommandGroup {
-  private Wait wait1 = new Wait(7);
-  private Wait wait2 = new Wait(15);
-  private Wait wait3 = new Wait(15);
-
   /**
    * Sequence of commands to dump cargo.
    */
@@ -25,27 +21,14 @@ public class CargoRoutine extends CommandGroup {
 
     addSequential(new HatchPush());
 
-    addSequential(wait1);
+    addSequential(new Wait(7));
 
     addSequential(new CargoDump());
 
-    addSequential(wait2);
+    addSequential(new Wait(15));
 
     addSequential(new HatchPull());
-    addSequential(wait3);
+    addSequential(new Wait(15));
     addSequential(new CargoReset());
-  }
-
-  private void reset() {
-    wait1.reset();
-    wait2.reset();
-    wait3.reset();
-  }
-
-  @Override
-  protected void end() {
-    super.end();
-    System.out.println("CargoRoutine done");
-    reset();
   }
 }
