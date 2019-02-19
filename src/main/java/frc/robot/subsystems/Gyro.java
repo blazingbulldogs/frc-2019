@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.shuffleboard.BuiltInWidgets;
 import frc.robot.Config;
-import frc.robot.structures.Logger;
+import frc.robot.util.Logger;
 
 public class Gyro extends Subsystem {
   // Put methods for controlling this subsystem

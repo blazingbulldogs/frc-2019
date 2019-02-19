@@ -13,13 +13,13 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
 import edu.wpi.first.wpilibj.shuffleboard.BuiltInWidgets;
-import frc.robot.OperatorInput;
+import frc.robot.controls.OperatorInput;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
 import frc.robot.Config;
-import frc.robot.structures.DriveJoystick;
-import frc.robot.structures.JoystickPorts;
-import frc.robot.structures.Logger;
+import frc.robot.controls.DriveJoystick;
+import frc.robot.controls.JoystickPorts;
+import frc.robot.util.Logger;
 
 /**
  * Driving subsystem that controls motors.
