@@ -8,7 +8,8 @@ public final class Config {
 
   // Enable certain subsystems
   public static final boolean driveSubsystemEnabled = true;
-  public static final boolean solenoidsSubsystemEnabled = true;
+  public static final boolean hatchSubsystemEnabled = true;
+  public static final boolean cargoSubsystemEnabled = true;
   public static final boolean gyroSubsystemEnabled = true;
   public static final boolean camerasEnabled = false;
 }

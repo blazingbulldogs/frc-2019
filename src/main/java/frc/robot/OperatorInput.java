@@ -19,7 +19,6 @@ import frc.robot.commands.solenoids.MoveDoubleSolenoid;
 import frc.robot.structures.Config;
 import frc.robot.structures.DriveJoystick;
 import frc.robot.structures.JoystickPorts;
-import frc.robot.subsystems.Drive;
 
 public class OperatorInput {
   //// CREATING BUTTONS
@@ -52,7 +51,7 @@ public class OperatorInput {
 
   public static final DriveJoystick driveJoystick = new DriveJoystick(RobotMap.joystick);
   public static double power = 3;
-  private static final DoubleSolenoid hatchSolenoid = Robot.solenoidsSubsystem.hatchSolenoid;
+  private static final DoubleSolenoid hatchSolenoid = Robot.hatchSubsystem.solenoid;
 
   /**
    * This class is the glue that binds the controls on the physical operator
@@ -65,17 +64,20 @@ public class OperatorInput {
       xButton.whenActive(new JoystickPower(true));
       xButton.whenInactive(new JoystickPower(false));
     }
-    if (Config.solenoidsSubsystemEnabled) {
+    if (Config.hatchSubsystemEnabled) {
       final JoystickButton leftBmp = new JoystickButton(driveJoystick, JoystickPorts.leftBumper);
       final JoystickButton rightBmp = new JoystickButton(driveJoystick, JoystickPorts.rightBumper);
 
       // Hatch pusher plaste
-      rightBmp.whenPressed(new MoveDoubleSolenoid(hatchSolenoid, Value.kReverse));
-      rightBmp.whenReleased(new MoveDoubleSolenoid(hatchSolenoid, Value.kForward));
+      rightBmp.whenPressed(new MoveDoubleSolenoid(Robot.hatchSubsystem.solenoid, Value.kReverse));
+      rightBmp.whenReleased(new MoveDoubleSolenoid(Robot.hatchSubsystem.solenoid, Value.kForward));
 
-      // Cargo dumper
-      leftBmp.whenPressed(new CargoRoutine());
+      if (Config.cargoSubsystemEnabled){
+        // Cargo dumper
+        leftBmp.whenPressed(new CargoRoutine());
+      }
     }
+
     if (Config.gyroSubsystemEnabled) {
       final JoystickButton bButton = new JoystickButton(driveJoystick, JoystickPorts.bButton);
       final JoystickButton yButton = new JoystickButton(driveJoystick, JoystickPorts.yButton);

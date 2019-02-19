@@ -13,9 +13,10 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import frc.robot.structures.Config;
 import frc.robot.structures.Logger;
+import frc.robot.subsystems.CargoDumper;
 import frc.robot.subsystems.Drive;
 import frc.robot.subsystems.Gyro;
-import frc.robot.subsystems.Solenoids;
+import frc.robot.subsystems.HatchPusher;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -27,8 +28,8 @@ import frc.robot.subsystems.Solenoids;
 public class Robot extends TimedRobot {
   public static Drive driveSubsystem;
   public static Gyro gyroSubsystem;
-  public static Solenoids solenoidsSubsystem;
-
+  public static HatchPusher hatchSubsystem;
+  public static CargoDumper cargoSubsystem;
   Robot() {
     if (Config.driveSubsystemEnabled) {
       driveSubsystem = new Drive();
@@ -36,8 +37,11 @@ public class Robot extends TimedRobot {
     if (Config.gyroSubsystemEnabled) {
       gyroSubsystem = new Gyro();
     }
-    if (Config.solenoidsSubsystemEnabled) {
-      solenoidsSubsystem = new Solenoids();
+    if (Config.hatchSubsystemEnabled) {
+      hatchSubsystem = new HatchPusher();
+    }    
+    if (Config.cargoSubsystemEnabled) {
+      cargoSubsystem = new CargoDumper();
     }
   }
 

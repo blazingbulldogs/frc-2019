@@ -22,27 +22,29 @@ public class CargoRoutine extends CommandGroup {
    */
   public CargoRoutine() {
     setTimeout(3.0);
+    requires(Robot.hatchSubsystem);
+    requires(Robot.cargoSubsystem);
 
     // Push hatch
-    addSequential(new MoveDoubleSolenoid(Robot.solenoidsSubsystem.hatchSolenoid, Value.kReverse));
+    addSequential(new MoveDoubleSolenoid(Robot.hatchSubsystem.solenoid, Value.kReverse));
 
     // Wait 7 ticks
     addSequential(wait1);
 
     // Dump cargo
-    addSequential(new MoveDoubleSolenoid(Robot.solenoidsSubsystem.cargoSolenoid, Value.kReverse));
+    addSequential(new MoveDoubleSolenoid(Robot.cargoSubsystem.solenoid, Value.kReverse));
 
     // Wait 15 ticks
     addSequential(wait2);
 
     // Pull hatch
-    addSequential(new MoveDoubleSolenoid(Robot.solenoidsSubsystem.hatchSolenoid, Value.kForward));
+    addSequential(new MoveDoubleSolenoid(Robot.hatchSubsystem.solenoid, Value.kForward));
 
     // Wait 15 ticks
     addSequential(wait3);
     
     // Reset cargo
-    addSequential(new MoveDoubleSolenoid(Robot.solenoidsSubsystem.cargoSolenoid, Value.kForward));
+    addSequential(new MoveDoubleSolenoid(Robot.cargoSubsystem.solenoid, Value.kForward));
   }
 
   private void reset() {
