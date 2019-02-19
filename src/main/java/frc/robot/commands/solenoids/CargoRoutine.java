@@ -8,7 +8,6 @@
 package frc.robot.commands.solenoids;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
-import frc.robot.Robot;
 import frc.robot.commands.Wait;
 
 public class CargoRoutine extends CommandGroup {
@@ -21,8 +20,6 @@ public class CargoRoutine extends CommandGroup {
    */
   public CargoRoutine() {
     setTimeout(3.0);
-    requires(Robot.hatchSubsystem);
-    requires(Robot.cargoSubsystem);
 
     addSequential(new HatchPush());
 

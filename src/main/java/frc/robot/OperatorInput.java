@@ -63,14 +63,15 @@ public class OperatorInput {
       xButton.whenInactive(new JoystickPower(false));
     }
     if (Config.hatchSubsystemEnabled) {
-      final JoystickButton leftBmp = new JoystickButton(driveJoystick, JoystickPorts.leftBumper);
       final JoystickButton rightBmp = new JoystickButton(driveJoystick, JoystickPorts.rightBumper);
 
-      // Hatch pusher plaste
+      // Hatch pusher plate
       rightBmp.whenPressed(new HatchPush());
       rightBmp.whenReleased(new HatchPull());
 
       if (Config.cargoSubsystemEnabled){
+        final JoystickButton leftBmp = new JoystickButton(driveJoystick, JoystickPorts.leftBumper);
+        
         // Cargo dumper
         leftBmp.whenPressed(new CargoRoutine());
       }

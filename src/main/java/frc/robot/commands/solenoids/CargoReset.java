@@ -12,6 +12,12 @@ import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import frc.robot.Robot;
 
 public class CargoReset extends MoveDoubleSolenoid {
+
+  public CargoReset(){
+    super();
+    requires(Robot.cargoSubsystem);
+  }
+  
   protected DoubleSolenoid sol() {
     return Robot.cargoSubsystem.solenoid;
   }
