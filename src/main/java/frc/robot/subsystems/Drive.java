@@ -77,7 +77,7 @@ public class Drive extends Subsystem {
     final double x = joystick.getScaledAxis(JoystickPorts.leftXAxis);
     final double y = -joystick.getScaledAxis(JoystickPorts.leftYAxis);
     final double z = joystick.getScaledAxis(JoystickPorts.rightXAxis);
-    final double angle = gyroDrive ? -gyro.ahrs.getAngle() : 0.0;
+    final double angle = gyro.getAngle();
 
     logger.logJoystick(joystick);
     robotDrive.driveCartesian(x, y, z, angle);

@@ -25,25 +25,12 @@ import frc.robot.subsystems.HatchPusher;
  * creating this project, you must also update the build.gradle file in the
  * project.
  */
+
 public class Robot extends TimedRobot {
-  public static Drive driveSubsystem;
-  public static Gyro gyroSubsystem;
-  public static HatchPusher hatchSubsystem;
-  public static CargoDumper cargoSubsystem;
-  Robot() {
-    if (Config.driveSubsystemEnabled) {
-      driveSubsystem = new Drive();
-    }
-    if (Config.gyroSubsystemEnabled) {
-      gyroSubsystem = new Gyro();
-    }
-    if (Config.hatchSubsystemEnabled) {
-      hatchSubsystem = new HatchPusher();
-    }    
-    if (Config.cargoSubsystemEnabled) {
-      cargoSubsystem = new CargoDumper();
-    }
-  }
+  public static Drive driveSubsystem = new Drive();
+  public static Gyro gyroSubsystem = new Gyro();
+  public static HatchPusher hatchSubsystem = new HatchPusher();
+  public static CargoDumper cargoSubsystem = new CargoDumper();
 
   /**
    * This function is run when the robot is first started up and should be used

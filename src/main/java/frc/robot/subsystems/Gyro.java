@@ -12,23 +12,41 @@ import com.kauailabs.navx.frc.AHRS;
 import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.shuffleboard.BuiltInWidgets;
+import frc.robot.structures.Config;
 import frc.robot.structures.Logger;
 
 public class Gyro extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
 
-  public AHRS ahrs = new AHRS(SPI.Port.kMXP);
+  private AHRS ahrs;
 
   /**
    * NavX gyroscope.
    */
   public Gyro() {
-    Logger.tab
-      .add("Gyro", ahrs)
+    if (Config.gyroSubsystemEnabled) {
+      ahrs = new AHRS(SPI.Port.kMXP);
+
+      Logger.tab.add("Gyro", ahrs)
       .withWidget(BuiltInWidgets.kGyro)
       .withPosition(11, 2)
       .withSize(2, 2);
+    }
+  }
+
+  public void zeroYaw(){
+    if (Config.gyroSubsystemEnabled) {
+      ahrs.zeroYaw();
+    }
+  }
+
+  public double getAngle(){
+    if (Config.gyroSubsystemEnabled) {
+      return -ahrs.getAngle();
+    } else {
+      return 0.0;
+    }
   }
 
   @Override
