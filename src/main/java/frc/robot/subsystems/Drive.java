@@ -7,17 +7,13 @@
 
 package frc.robot.subsystems;
 
-import com.ctre.phoenix.motorcontrol.ControlMode;
-
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.shuffleboard.BuiltInWidgets;
 import frc.robot.OperatorInput;
-import frc.robot.Robot;
 import frc.robot.RobotMap;
-import frc.robot.structures.Config;
 import frc.robot.structures.DriveJoystick;
 import frc.robot.structures.JoystickPorts;
 import frc.robot.structures.Logger;
@@ -62,15 +58,6 @@ public class Drive extends Subsystem {
 
   @Override
   public void periodic() {
-    double angle = 0;
-    boolean gyroDrive = false;
-
-    if (Config.gyroSubsystemEnabled) {
-      final Gyro gyro = Robot.gyroSubsystem;
-      angle = gyro.ahrs.getAngle();
-      gyroDrive = gyro.gyroDrive;
-    }
-
     final DriveJoystick joystick = OperatorInput.driveJoystick;
 
     final double y = -joystick.getScaledAxis(JoystickPorts.leftYAxis);

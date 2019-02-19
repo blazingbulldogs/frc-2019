@@ -7,14 +7,8 @@
 
 package frc.robot;
 
-import edu.wpi.first.wpilibj.DoubleSolenoid;
-import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import frc.robot.Robot;
 import frc.robot.commands.JoystickPower;
-import frc.robot.commands.gyroscope.ZeroGyroYaw;
-import frc.robot.commands.solenoids.CargoRoutine;
-import frc.robot.commands.solenoids.MoveDoubleSolenoid;
 import frc.robot.structures.Config;
 import frc.robot.structures.DriveJoystick;
 import frc.robot.structures.JoystickPorts;
@@ -63,24 +57,7 @@ public class OperatorInput {
       xButton.whenActive(new JoystickPower(true));
       xButton.whenInactive(new JoystickPower(false));
     }
-    if (Config.solenoidsSubsystemEnabled) {
-      final JoystickButton leftBmp = new JoystickButton(driveJoystick, JoystickPorts.leftBumper);
-      final JoystickButton rightBmp = new JoystickButton(driveJoystick, JoystickPorts.rightBumper);
-
-      // Hatch pusher plaste
-      // rightBmp.whenPressed(new MoveDoubleSolenoid(hatchSolenoid, Value.kReverse));
-      // rightBmp.whenReleased(new MoveDoubleSolenoid(hatchSolenoid, Value.kForward));
-
-      // Cargo dumper
-      // leftBmp.whenPressed(new CargoRoutine());
-    }
-    if (Config.gyroSubsystemEnabled) {
-      final JoystickButton bButton = new JoystickButton(driveJoystick, JoystickPorts.bButton);
-
-      bButton.whenPressed(new ZeroGyroYaw());
-    }
   }
-
   /**
    * Get output from the left and right triggers that is in the ranges of the
    * z-axis from a controller.
