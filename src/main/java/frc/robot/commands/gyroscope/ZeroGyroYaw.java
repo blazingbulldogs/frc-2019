@@ -24,6 +24,6 @@ public class ZeroGyroYaw extends InstantCommand {
   // Called once when the command executes
   @Override
   protected void initialize() {
-    Robot.gyroSubsystem.ahrs.zeroYaw();
+   Robot.gyroSubsystem.ahrs.zeroYaw();
   }
 }

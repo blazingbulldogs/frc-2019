@@ -9,15 +9,14 @@ package frc.robot.commands.solenoids;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
-import edu.wpi.first.wpilibj.command.InstantCommand;
+import frc.robot.Robot;
 
-abstract public class MoveDoubleSolenoid extends InstantCommand {
-  abstract protected DoubleSolenoid sol();
-  abstract protected Value val();
+public class CargoReset extends MoveDoubleSolenoid {
+  protected DoubleSolenoid sol() {
+    return Robot.cargoSubsystem.solenoid;
+  }
 
-  // Called once when the command executes
-  @Override
-  protected void initialize() {
-    sol().set(val());
+  protected Value val() {
+    return Value.kForward;
   }
 }

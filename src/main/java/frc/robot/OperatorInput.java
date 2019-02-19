@@ -7,15 +7,14 @@
 
 package frc.robot;
 
-import edu.wpi.first.wpilibj.DoubleSolenoid;
-import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import frc.robot.Robot;
 import frc.robot.commands.JoystickPower;
 import frc.robot.commands.gyroscope.GyroToggle;
 import frc.robot.commands.gyroscope.ZeroGyroYaw;
 import frc.robot.commands.solenoids.CargoRoutine;
-import frc.robot.commands.solenoids.MoveDoubleSolenoid;
+import frc.robot.commands.solenoids.HatchPull;
+import frc.robot.commands.solenoids.HatchPush;
+
 import frc.robot.structures.Config;
 import frc.robot.structures.DriveJoystick;
 import frc.robot.structures.JoystickPorts;
@@ -51,7 +50,6 @@ public class OperatorInput {
 
   public static final DriveJoystick driveJoystick = new DriveJoystick(RobotMap.joystick);
   public static double power = 3;
-  private static final DoubleSolenoid hatchSolenoid = Robot.hatchSubsystem.solenoid;
 
   /**
    * This class is the glue that binds the controls on the physical operator
@@ -69,8 +67,8 @@ public class OperatorInput {
       final JoystickButton rightBmp = new JoystickButton(driveJoystick, JoystickPorts.rightBumper);
 
       // Hatch pusher plaste
-      rightBmp.whenPressed(new MoveDoubleSolenoid(Robot.hatchSubsystem.solenoid, Value.kReverse));
-      rightBmp.whenReleased(new MoveDoubleSolenoid(Robot.hatchSubsystem.solenoid, Value.kForward));
+      rightBmp.whenPressed(new HatchPush());
+      rightBmp.whenReleased(new HatchPull());
 
       if (Config.cargoSubsystemEnabled){
         // Cargo dumper
