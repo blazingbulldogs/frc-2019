@@ -9,7 +9,7 @@ package frc.robot.commands.gyroscope;
 
 import edu.wpi.first.wpilibj.command.InstantCommand;
 import frc.robot.Robot;
-import frc.robot.structures.Config;
+import frc.robot.Config;
 
 
 /**

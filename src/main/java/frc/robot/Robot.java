@@ -11,7 +11,7 @@ import edu.wpi.cscore.HttpCamera;
 import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
-import frc.robot.structures.Config;
+import frc.robot.Config;
 import frc.robot.structures.Logger;
 import frc.robot.subsystems.CargoDumper;
 import frc.robot.subsystems.Drive;

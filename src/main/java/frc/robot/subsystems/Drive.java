@@ -16,7 +16,7 @@ import edu.wpi.first.wpilibj.shuffleboard.BuiltInWidgets;
 import frc.robot.OperatorInput;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
-import frc.robot.structures.Config;
+import frc.robot.Config;
 import frc.robot.structures.DriveJoystick;
 import frc.robot.structures.JoystickPorts;
 import frc.robot.structures.Logger;

@@ -12,7 +12,7 @@ import com.kauailabs.navx.frc.AHRS;
 import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.shuffleboard.BuiltInWidgets;
-import frc.robot.structures.Config;
+import frc.robot.Config;
 import frc.robot.structures.Logger;
 
 public class Gyro extends Subsystem {

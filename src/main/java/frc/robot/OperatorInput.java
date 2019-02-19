@@ -15,7 +15,7 @@ import frc.robot.commands.solenoids.CargoRoutine;
 import frc.robot.commands.solenoids.HatchPull;
 import frc.robot.commands.solenoids.HatchPush;
 
-import frc.robot.structures.Config;
+import frc.robot.Config;
 import frc.robot.structures.DriveJoystick;
 import frc.robot.structures.JoystickPorts;
 
