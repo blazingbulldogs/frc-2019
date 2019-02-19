@@ -31,7 +31,7 @@ public class Drive extends Subsystem {
   public MecanumDrive robotDrive;
 
   private final Logger logger = new Logger();
-
+  private static boolean gyroDrive = Config.gyroSubsystemEnabled;
   // Motor controllers
   public final WPI_TalonSRX talonRearRight = new WPI_TalonSRX(RobotMap.talonRearRight);
   public final WPI_TalonSRX talonRearLeft = new WPI_TalonSRX(RobotMap.talonRearLeft);
@@ -60,28 +60,27 @@ public class Drive extends Subsystem {
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new ExampleCommand());
+
+  }
+
+  public void toggleGyroUse(){
+    if (Config.gyroSubsystemEnabled){
+      gyroDrive = !gyroDrive;
+    }
   }
 
   @Override
   public void periodic() {
-    double angle = 0;
-    boolean gyroDrive = false;
-
-    if (Config.gyroSubsystemEnabled) {
-      final Gyro gyro = Robot.gyroSubsystem;
-      angle = gyro.ahrs.getAngle();
-      gyroDrive = gyro.gyroDrive;
-    }
-
+    final Gyro gyro = Robot.gyroSubsystem;
     final DriveJoystick joystick = OperatorInput.driveJoystick;
 
     final double x = joystick.getScaledAxis(JoystickPorts.leftXAxis);
     final double y = -joystick.getScaledAxis(JoystickPorts.leftYAxis);
     final double z = joystick.getScaledAxis(JoystickPorts.rightXAxis);
+    final double angle = gyroDrive ? -gyro.ahrs.getAngle() : 0.0;
 
     logger.logJoystick(joystick);
-
-    robotDrive.driveCartesian(x, y, z, gyroDrive ? angle : 0);
+    robotDrive.driveCartesian(x, y, z, angle);
   }
 
   public void stop() {

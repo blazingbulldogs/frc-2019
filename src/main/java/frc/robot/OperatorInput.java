@@ -12,12 +12,14 @@ import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.Robot;
 import frc.robot.commands.JoystickPower;
+import frc.robot.commands.gyroscope.GyroToggle;
 import frc.robot.commands.gyroscope.ZeroGyroYaw;
 import frc.robot.commands.solenoids.CargoRoutine;
 import frc.robot.commands.solenoids.MoveDoubleSolenoid;
 import frc.robot.structures.Config;
 import frc.robot.structures.DriveJoystick;
 import frc.robot.structures.JoystickPorts;
+import frc.robot.subsystems.Drive;
 
 public class OperatorInput {
   //// CREATING BUTTONS
@@ -76,8 +78,10 @@ public class OperatorInput {
     }
     if (Config.gyroSubsystemEnabled) {
       final JoystickButton bButton = new JoystickButton(driveJoystick, JoystickPorts.bButton);
+      final JoystickButton yButton = new JoystickButton(driveJoystick, JoystickPorts.yButton);
 
       bButton.whenPressed(new ZeroGyroYaw());
+      yButton.whenPressed(new GyroToggle());
     }
   }
 

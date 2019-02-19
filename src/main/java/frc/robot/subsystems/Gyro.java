@@ -19,7 +19,6 @@ public class Gyro extends Subsystem {
   // here. Call these from Commands.
 
   public AHRS ahrs = new AHRS(SPI.Port.kMXP);
-  public boolean gyroDrive = true;
 
   /**
    * NavX gyroscope.
