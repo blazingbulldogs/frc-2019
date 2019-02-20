@@ -41,18 +41,6 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
-    if (Config.camerasEnabled) {
-      CameraServer cameraServer = CameraServer.getInstance();
-      HttpCamera jetsonCamera = new HttpCamera("camera", Config.jetsonIP + ":1234/?action=stream");
-      cameraServer.startAutomaticCapture(jetsonCamera);
-      HttpCamera otherCamera = new HttpCamera("camera2", Config.jetsonIP + ":1235/?action=stream");
-      cameraServer.startAutomaticCapture(otherCamera);
-
-      Logger.tab
-        .add("Camera", jetsonCamera)
-        .withSize(7, 6)
-        .withPosition(4, 0);
-    }
 
     new OperatorInput();
   }

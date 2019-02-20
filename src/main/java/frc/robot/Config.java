@@ -12,5 +12,4 @@ public final class Config {
   public static final boolean cargoSubsystemEnabled = true;
   public static final boolean gyroSubsystemEnabled = true;
   public static final boolean jetsonSubsystemEnabled = true;
-  public static final boolean camerasEnabled = false;
 }
