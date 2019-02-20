@@ -17,19 +17,20 @@ public class CargoRoutine extends CommandGroup {
    * Sequence of commands to dump cargo.
    */
   public CargoRoutine() {
-    setTimeout(3.0);
-
-    addSequential(new HatchPush());
-
-    addSequential(new Wait(7));
+    setTimeout(5.0);
 
     addSequential(new CargoDump());
 
     addSequential(new Wait(15));
 
-    addSequential(new HatchPull());
-    addSequential(new Wait(25));
+    addSequential(new HatchPush());
+
+    addSequential(new Wait(15));
+
     addSequential(new CargoReset());
+    addSequential(new Wait(25));
+    addSequential(new HatchPull());
+    
     
   }
 }

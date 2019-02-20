@@ -16,6 +16,9 @@ import frc.robot.commands.gyroscope.GyroToggle;
 import frc.robot.commands.gyroscope.ZeroGyroYaw;
 import frc.robot.commands.hatch.HatchPull;
 import frc.robot.commands.hatch.HatchPush;
+import frc.robot.commands.jetson.JetsonPowerCycle;
+import frc.robot.commands.jetson.JetsonPowerDefault;
+import frc.robot.commands.jetson.JetsonPowerOn;
 import frc.robot.Config;
 import frc.robot.RobotMap;
 import frc.robot.controls.DriveJoystick;
@@ -86,6 +89,18 @@ public class OperatorInput {
       bButton.whenPressed(new ZeroGyroYaw());
       yButton.whenPressed(new GyroToggle());
     }
+
+    // TODO: Move these to shuffleBoard
+    if (Config.jetsonSubsystemEnabled) {
+      final JoystickButton backButton = new JoystickButton(driveJoystick, JoystickPorts.backButton);
+      backButton.whenPressed(new JetsonPowerCycle());
+      backButton.whenReleased(new JetsonPowerDefault());
+
+      final JoystickButton startButton = new JoystickButton(driveJoystick, JoystickPorts.startButton);
+      startButton.whenPressed(new JetsonPowerOn());
+      startButton.whenReleased(new JetsonPowerDefault());
+    }
+
   }
 
   /**

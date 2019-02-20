@@ -41,4 +41,7 @@ public class RobotMap {
   public static final int hatchSolenoid2 = 6;
   public static final int cargoSolenoid1 = 2;
   public static final int cargoSolenoid2 = 3;
+
+  // Relay 
+  public static final int jetsonRelay = 3;
 }

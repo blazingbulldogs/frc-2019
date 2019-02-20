@@ -18,6 +18,7 @@ import frc.robot.subsystems.CargoDumper;
 import frc.robot.subsystems.Drive;
 import frc.robot.subsystems.Gyro;
 import frc.robot.subsystems.HatchPusher;
+import frc.robot.subsystems.Jetson;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -32,6 +33,7 @@ public class Robot extends TimedRobot {
   public static final Gyro gyroSubsystem = new Gyro();
   public static final HatchPusher hatchSubsystem = new HatchPusher();
   public static final CargoDumper cargoSubsystem = new CargoDumper();
+  public static final Jetson jetsonSubsystem = new Jetson();
 
   /**
    * This function is run when the robot is first started up and should be used
