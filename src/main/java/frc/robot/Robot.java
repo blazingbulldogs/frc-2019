@@ -28,10 +28,10 @@ import frc.robot.subsystems.HatchPusher;
  */
 
 public class Robot extends TimedRobot {
-  public static Drive driveSubsystem = new Drive();
-  public static Gyro gyroSubsystem = new Gyro();
-  public static HatchPusher hatchSubsystem = new HatchPusher();
-  public static CargoDumper cargoSubsystem = new CargoDumper();
+  public static final Drive driveSubsystem = new Drive();
+  public static final Gyro gyroSubsystem = new Gyro();
+  public static final HatchPusher hatchSubsystem = new HatchPusher();
+  public static final CargoDumper cargoSubsystem = new CargoDumper();
 
   /**
    * This function is run when the robot is first started up and should be used

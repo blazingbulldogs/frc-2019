@@ -28,7 +28,8 @@ public class CargoRoutine extends CommandGroup {
     addSequential(new Wait(15));
 
     addSequential(new HatchPull());
-    addSequential(new Wait(15));
+    addSequential(new Wait(25));
     addSequential(new CargoReset());
+    
   }
 }

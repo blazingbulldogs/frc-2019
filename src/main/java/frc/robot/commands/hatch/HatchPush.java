@@ -19,6 +19,10 @@ public class HatchPush extends MoveDoubleSolenoid {
     requires(Robot.hatchSubsystem);
   }
 
-  protected DoubleSolenoid sol(){return Robot.hatchSubsystem.solenoid; }
-  protected Value val(){ return Value.kReverse; }
+  protected DoubleSolenoid sol(){
+    return Robot.hatchSubsystem.solenoid; 
+  }
+  protected Value val(){ 
+    return Value.kReverse; 
+  }
 }

@@ -9,6 +9,8 @@ package frc.robot.controls;
 
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.JoystickPower;
+import frc.robot.commands.cargo.CargoDump;
+import frc.robot.commands.cargo.CargoReset;
 import frc.robot.commands.cargo.CargoRoutine;
 import frc.robot.commands.gyroscope.GyroToggle;
 import frc.robot.commands.gyroscope.ZeroGyroYaw;
@@ -49,7 +51,7 @@ public class OperatorInput {
   // button.whenReleased(new ExampleCommand());
 
   public static final DriveJoystick driveJoystick = new DriveJoystick(RobotMap.joystick);
-  public static double power = 3;
+  public static double power = 1;
 
   /**
    * This class is the glue that binds the controls on the physical operator

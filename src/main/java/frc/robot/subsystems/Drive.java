@@ -49,11 +49,8 @@ public class Drive extends Subsystem {
 
     robotDrive = new MecanumDrive(talonFrontLeft, talonRearLeft, talonFrontRight, talonRearRight);
 
-    Logger.tab
-      .add("Mecanum Drive Train", robotDrive)
-      .withSize(4, 2)
-      .withPosition(0, 0)
-      .withWidget(BuiltInWidgets.kMecanumDrive);
+    Logger.tab.add("Mecanum Drive Train", robotDrive).withSize(4, 2).withPosition(0, 0)
+        .withWidget(BuiltInWidgets.kMecanumDrive);
   }
 
   @Override
@@ -63,8 +60,8 @@ public class Drive extends Subsystem {
 
   }
 
-  public void toggleGyroUse(){
-    if (Config.gyroSubsystemEnabled){
+  public void toggleGyroUse() {
+    if (Config.gyroSubsystemEnabled) {
       gyroDrive = !gyroDrive;
     }
   }
@@ -77,7 +74,7 @@ public class Drive extends Subsystem {
     final double x = joystick.getScaledAxis(JoystickPorts.leftXAxis);
     final double y = -joystick.getScaledAxis(JoystickPorts.leftYAxis);
     final double z = joystick.getScaledAxis(JoystickPorts.rightXAxis);
-    final double angle = gyro.getAngle();
+    final double angle = gyroDrive ? gyro.getAngle() : 0.0;
 
     logger.logJoystick(joystick);
     robotDrive.driveCartesian(x, y, z, angle);

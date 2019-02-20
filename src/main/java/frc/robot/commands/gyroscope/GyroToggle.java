@@ -17,7 +17,7 @@ import frc.robot.Config;
  */
 public class GyroToggle extends InstantCommand {
   /**
-   * Turns Gyro off 
+   * Toggles gyro use 
    * 
    */
   public GyroToggle() {
