@@ -10,7 +10,7 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.drive.MecanumDrive;
 import edu.wpi.first.wpilibj.shuffleboard.BuiltInWidgets;
 import frc.robot.OperatorInput;
 import frc.robot.RobotMap;
@@ -25,29 +25,27 @@ public class Drive extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
 
-  public DifferentialDrive robotDrive;
+  public MecanumDrive robotDrive;
 
   private final Logger logger = new Logger();
 
   // Motor controllers
   public final Spark sparkFrontLeft = new Spark(RobotMap.sparkFrontLeft);
   public final Spark sparkRearLeft = new Spark(RobotMap.sparkRearLeft);
-  SpeedControllerGroup leftSparks = new SpeedControllerGroup(sparkFrontLeft, sparkRearLeft);
 
   public final Spark sparkFrontRight = new Spark(RobotMap.sparkFrontRight);
   public final Spark sparkRearRight = new Spark(RobotMap.sparkRearRight);
-  SpeedControllerGroup rightSparks = new SpeedControllerGroup(sparkFrontRight, sparkRearRight);
   /**
    * Set up motors and robot drive.
    */
   public Drive() {
-    robotDrive = new DifferentialDrive(leftSparks, rightSparks);
+    MecanumDrive robotDrive = new MecanumDrive(sparkFrontLeft, sparkRearLeft, sparkFrontRight, sparkRearRight);
 
     Logger.tab
-      .add("Differential Drive Train", robotDrive)
+      .add("Mecanum Drive Train", robotDrive)
       .withSize(4, 2)
       .withPosition(0, 0)
-      .withWidget(BuiltInWidgets.kDifferentialDrive);
+      .withWidget(BuiltInWidgets.kMecanumDrive);
   }
 
   @Override
@@ -60,15 +58,16 @@ public class Drive extends Subsystem {
   public void periodic() {
     final DriveJoystick joystick = OperatorInput.driveJoystick;
 
+    final double x = joystick.getScaledAxis(JoystickPorts.leftXAxis);
     final double y = -joystick.getScaledAxis(JoystickPorts.leftYAxis);
     final double z = joystick.getScaledAxis(JoystickPorts.rightXAxis);
 
     logger.logJoystick(joystick);
 
-    robotDrive.arcadeDrive(y, z);
+    robotDrive.driveCartesian(x, y, z);
   }
 
   public void stop() {
-    robotDrive.arcadeDrive(0, 0);
+    robotDrive.driveCartesian(0, 0, 0);
   }
 }
