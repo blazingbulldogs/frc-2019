@@ -16,16 +16,16 @@ public class JoystickPower extends InstantCommand {
   /**
    * Toggle the power value of the joystick.
    */
-  public JoystickPower(boolean toSlow) {
+  public JoystickPower() {
     super();
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    toSlow = powerChange;
   }
 
   // Called once when the command executes
   @Override
   protected void initialize() {
+    powerChange = !powerChange;
     OperatorInput.power = powerChange ? 1 : 3;
   }
 }

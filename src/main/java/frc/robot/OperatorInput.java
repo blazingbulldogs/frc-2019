@@ -54,8 +54,7 @@ public class OperatorInput {
     if (Config.driveSubsystemEnabled) {
       final JoystickButton xButton = new JoystickButton(driveJoystick, JoystickPorts.xButton);
 
-      xButton.whenActive(new JoystickPower(true));
-      xButton.whenInactive(new JoystickPower(false));
+      xButton.whenPressed(new JoystickPower());
     }
   }
   /**
