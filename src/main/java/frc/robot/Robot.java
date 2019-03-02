@@ -22,14 +22,11 @@ import frc.robot.subsystems.HatchPusher;
  * project.
  */
 public class Robot extends TimedRobot {
-  public static Drive driveSubsystem;
-  public static CargoDumper cargoSubsystem;
-  public static HatchPusher hatchSubsystem;
+  public static Drive driveSubsystem = new Drive();
+  public static CargoDumper cargoSubsystem = new CargoDumper();
+  public static HatchPusher hatchSubsystem = new HatchPusher();
 
   Robot() {
-    if (Config.driveSubsystemEnabled) {
-      driveSubsystem = new Drive();
-    }
   }
 
   /**
