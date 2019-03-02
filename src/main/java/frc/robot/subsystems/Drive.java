@@ -7,13 +7,17 @@
 
 package frc.robot.subsystems;
 
-import edu.wpi.first.wpilibj.SpeedControllerGroup;
-import edu.wpi.first.wpilibj.Spark;
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
+
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
 import edu.wpi.first.wpilibj.shuffleboard.BuiltInWidgets;
 import frc.robot.OperatorInput;
+import frc.robot.Robot;
 import frc.robot.RobotMap;
+import frc.robot.structures.Config;
 import frc.robot.structures.DriveJoystick;
 import frc.robot.structures.JoystickPorts;
 import frc.robot.structures.Logger;
@@ -28,30 +32,34 @@ public class Drive extends Subsystem {
   public MecanumDrive robotDrive;
 
   private final Logger logger = new Logger();
-
   // Motor controllers
-  public final Spark sparkFrontLeft = new Spark(RobotMap.sparkFrontLeft);
-  public final Spark sparkRearLeft = new Spark(RobotMap.sparkRearLeft);
+  public final WPI_VictorSPX talonRearRight = new WPI_VictorSPX(RobotMap.victorRearRight);
+  public final WPI_VictorSPX talonRearLeft = new WPI_VictorSPX(RobotMap.victorRearLeft);
+  public final WPI_TalonSRX talonFrontRight = new WPI_TalonSRX(RobotMap.talonFrontRight);
+  public final WPI_TalonSRX talonFrontLeft = new WPI_TalonSRX(RobotMap.talonFrontLeft);
 
-  public final Spark sparkFrontRight = new Spark(RobotMap.sparkFrontRight);
-  public final Spark sparkRearRight = new Spark(RobotMap.sparkRearRight);
   /**
    * Set up motors and robot drive.
    */
   public Drive() {
-    MecanumDrive robotDrive = new MecanumDrive(sparkFrontLeft, sparkRearLeft, sparkFrontRight, sparkRearRight);
+    talonFrontLeft.set(ControlMode.PercentOutput, 0);
+    talonFrontRight.set(ControlMode.PercentOutput, 0);
+    talonRearLeft.set(ControlMode.PercentOutput, 0);
+    talonRearRight.set(ControlMode.PercentOutput, 0);
 
-    Logger.tab
-      .add("Mecanum Drive Train", robotDrive)
-      .withSize(4, 2)
-      .withPosition(0, 0)
-      .withWidget(BuiltInWidgets.kMecanumDrive);
+    robotDrive = new MecanumDrive(talonFrontLeft, talonRearLeft, talonFrontRight, talonRearRight);
+
+    Logger.tab.add("Mecanum Drive Train", robotDrive)
+    .withSize(4, 2)
+    .withPosition(0, 0)
+    .withWidget(BuiltInWidgets.kMecanumDrive);
   }
 
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new ExampleCommand());
+
   }
 
   @Override
@@ -63,7 +71,6 @@ public class Drive extends Subsystem {
     final double z = joystick.getScaledAxis(JoystickPorts.rightXAxis);
 
     logger.logJoystick(joystick);
-
     robotDrive.driveCartesian(x, y, z);
   }
 

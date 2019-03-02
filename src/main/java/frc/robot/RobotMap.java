@@ -31,10 +31,10 @@ public class RobotMap {
   public static final int joystick = 0;
 
   // Spark motor controllers
-  public static final int sparkRearRight = 4;
-  public static final int sparkFrontRight = 3;
-  public static final int sparkRearLeft = 1;
-  public static final int sparkFrontLeft = 2;
+  public static final int victorRearRight = 4;
+  public static final int talonFrontRight = 3;
+  public static final int victorRearLeft = 1;
+  public static final int talonFrontLeft = 2;
 
   // Solenoids
   public static final int hatchSolenoid1 = 1;
