@@ -9,6 +9,9 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.JoystickPower;
+import frc.robot.commands.cargo.CargoRoutine;
+import frc.robot.commands.hatch.HatchPull;
+import frc.robot.commands.hatch.HatchPush;
 import frc.robot.structures.Config;
 import frc.robot.structures.DriveJoystick;
 import frc.robot.structures.JoystickPorts;
@@ -55,6 +58,20 @@ public class OperatorInput {
       final JoystickButton xButton = new JoystickButton(driveJoystick, JoystickPorts.xButton);
 
       xButton.whenPressed(new JoystickPower());
+    }
+    if (Config.hatchSubsystemEnabled) {
+      final JoystickButton rightBmp = new JoystickButton(driveJoystick, JoystickPorts.rightBumper);
+
+      // Hatch pusher plate
+      rightBmp.whenPressed(new HatchPush());
+      rightBmp.whenReleased(new HatchPull());
+
+      if (Config.cargoSubsystemEnabled){
+        final JoystickButton leftBmp = new JoystickButton(driveJoystick, JoystickPorts.leftBumper);
+        
+        // Cargo dumper
+        leftBmp.whenPressed(new CargoRoutine());
+      }
     }
   }
   /**
