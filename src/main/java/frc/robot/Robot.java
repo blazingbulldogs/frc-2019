@@ -7,13 +7,12 @@
 
 package frc.robot;
 
-import edu.wpi.cscore.HttpCamera;
-import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import frc.robot.structures.Config;
-import frc.robot.structures.Logger;
 import frc.robot.subsystems.Drive;
+import frc.robot.subsystems.CargoDumper;
+import frc.robot.subsystems.HatchPusher;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -24,6 +23,8 @@ import frc.robot.subsystems.Drive;
  */
 public class Robot extends TimedRobot {
   public static Drive driveSubsystem;
+  public static CargoDumper cargoSubsystem;
+  public static HatchPusher hatchSubsystem;
 
   Robot() {
     if (Config.driveSubsystemEnabled) {
@@ -37,18 +38,6 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
-    if (Config.camerasEnabled) {
-      CameraServer cameraServer = CameraServer.getInstance();
-      HttpCamera jetsonCamera = new HttpCamera("camera", Config.jetsonIP + ":1234/?action=stream");
-      cameraServer.startAutomaticCapture(jetsonCamera);
-      HttpCamera otherCamera = new HttpCamera("camera2", Config.jetsonIP + ":1235/?action=stream");
-      cameraServer.startAutomaticCapture(otherCamera);
-
-      Logger.tab
-        .add("Camera", jetsonCamera)
-        .withSize(7, 6)
-        .withPosition(4, 0);
-    }
 
     new OperatorInput();
   }
