@@ -13,12 +13,11 @@ import frc.robot.Config;
 
 
 /**
- * Add your docs here.
+ * Toggles gyro use 
  */
 public class GyroToggle extends InstantCommand {
   /**
    * Toggles gyro use 
-   * 
    */
   public GyroToggle() {
     super();

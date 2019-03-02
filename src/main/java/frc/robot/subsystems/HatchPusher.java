@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
 
 /**
- * Add your docs here.
+ * Hatch DoubleSolenoid
  */
 public class HatchPusher extends Subsystem {
   public final DoubleSolenoid solenoid = new DoubleSolenoid(RobotMap.hatchSolenoid1, RobotMap.hatchSolenoid2);

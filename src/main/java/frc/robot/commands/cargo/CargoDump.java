@@ -13,7 +13,9 @@ import frc.robot.Robot;
 import frc.robot.commands.solenoids.MoveDoubleSolenoid;
 
 public class CargoDump extends MoveDoubleSolenoid {
-
+  /**
+   * Push Cargo Solenoid
+   */
   public CargoDump(){
     super();
     requires(Robot.cargoSubsystem);

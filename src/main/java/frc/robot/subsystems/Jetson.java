@@ -14,7 +14,7 @@ import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.Relay.Value;
 
 /**
- * Add your docs here.
+ * Jetson Relay
  */
 public class Jetson extends Subsystem {
   public final Relay relay = new Relay(RobotMap.jetsonRelay);

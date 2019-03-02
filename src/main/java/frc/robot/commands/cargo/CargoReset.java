@@ -13,7 +13,9 @@ import frc.robot.Robot;
 import frc.robot.commands.solenoids.MoveDoubleSolenoid;
 
 public class CargoReset extends MoveDoubleSolenoid {
-
+  /**
+   * Reset Cargo Solenoid
+   */
   public CargoReset(){
     super();
     requires(Robot.cargoSubsystem);

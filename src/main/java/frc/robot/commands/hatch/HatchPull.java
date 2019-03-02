@@ -13,7 +13,9 @@ import frc.robot.Robot;
 import frc.robot.commands.solenoids.MoveDoubleSolenoid;
 
 public class HatchPull extends MoveDoubleSolenoid {
-
+/**
+ * Pull Hatch Solenoid
+ */
   public HatchPull(){
     super();
     requires(Robot.hatchSubsystem);

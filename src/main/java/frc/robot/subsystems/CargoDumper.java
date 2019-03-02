@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
 
 /**
- * Add your docs here.
+ * Cargo Solenoid
  */
 public class CargoDumper extends Subsystem {
   public final DoubleSolenoid solenoid = new DoubleSolenoid(RobotMap.cargoSolenoid1, RobotMap.cargoSolenoid2);
