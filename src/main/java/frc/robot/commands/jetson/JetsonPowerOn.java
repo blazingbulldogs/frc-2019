@@ -11,11 +11,11 @@ import edu.wpi.first.wpilibj.command.InstantCommand;
 import frc.robot.Robot;
 
 /**
- * Add your docs here.
+ * Jetson Relay = kForward
  */
 public class JetsonPowerOn extends InstantCommand {
   /**
-   * Add your docs here.
+   * Jetson Relay = kForward
    */
   public JetsonPowerOn() {
     super();
