@@ -8,21 +8,23 @@
 package frc.robot.controls;
 
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.shuffleboard.BuiltInWidgets;
 import frc.robot.commands.JoystickPower;
-import frc.robot.commands.cargo.CargoDump;
-import frc.robot.commands.cargo.CargoReset;
 import frc.robot.commands.cargo.CargoRoutine;
 import frc.robot.commands.gyroscope.GyroToggle;
 import frc.robot.commands.gyroscope.ZeroGyroYaw;
 import frc.robot.commands.hatch.HatchPull;
 import frc.robot.commands.hatch.HatchPush;
+import frc.robot.commands.jetson.JetsonOnGroup;
 import frc.robot.commands.jetson.JetsonPowerCycle;
 import frc.robot.commands.jetson.JetsonPowerDefault;
 import frc.robot.commands.jetson.JetsonPowerOn;
+import frc.robot.commands.jetson.JetsonResetGroup;
 import frc.robot.Config;
 import frc.robot.RobotMap;
 import frc.robot.controls.DriveJoystick;
 import frc.robot.controls.JoystickPorts;
+import frc.robot.util.Logger;
 
 public class OperatorInput {
   //// CREATING BUTTONS
@@ -92,13 +94,21 @@ public class OperatorInput {
 
     // TODO: Move these to shuffleBoard
     if (Config.jetsonSubsystemEnabled) {
-      final JoystickButton backButton = new JoystickButton(driveJoystick, JoystickPorts.backButton);
-      backButton.whenPressed(new JetsonPowerCycle());
-      backButton.whenReleased(new JetsonPowerDefault());
+      // final JoystickButton backButton = new JoystickButton(driveJoystick, JoystickPorts.backButton);
+      // backButton.whenPressed(new JetsonPowerCycle());
+      // backButton.whenReleased(new JetsonPowerDefault());
 
-      final JoystickButton startButton = new JoystickButton(driveJoystick, JoystickPorts.startButton);
-      startButton.whenPressed(new JetsonPowerOn());
-      startButton.whenReleased(new JetsonPowerDefault());
+      // final JoystickButton startButton = new JoystickButton(driveJoystick, JoystickPorts.startButton);
+      // startButton.whenPressed(new JetsonPowerOn());
+      // startButton.whenReleased(new JetsonPowerDefault());
+      Logger.tab.add("Jetson On", new JetsonOnGroup())
+      .withWidget(BuiltInWidgets.kCommand)
+      .withPosition(1, 2)
+      .withSize(1, 1);
+      Logger.tab.add("Jetson Reset", new JetsonResetGroup())
+      .withWidget(BuiltInWidgets.kCommand)
+      .withPosition(1, 3)
+      .withSize(1, 1);
     }
 
   }
