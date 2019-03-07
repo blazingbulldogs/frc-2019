@@ -1,5 +1,8 @@
 package frc.robot.util;
 
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.wpilibj.shuffleboard.BuiltInWidgets;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
@@ -9,10 +12,9 @@ import frc.robot.controls.DriveJoystick;
 import frc.robot.controls.JoystickPorts;
 
 public class Logger {
-  // Use random number to create new tabs when debugging
-  public static final ShuffleboardTab tab = Shuffleboard.getTab(Double.toString(Math.random()));
-  // public static final ShuffleboardTab tab = Shuffleboard.getTab("Driving");
-  public static final DriveJoystick driveJoystick = new DriveJoystick(RobotMap.joystick);
+// Use time to create new tabs for debugging
+private static String finalDate = (DateTimeFormatter.ofPattern("hh:mm:ss").format(ZonedDateTime.now()).toString());
+public static final ShuffleboardTab tab = Shuffleboard.getTab("Driving " + finalDate);
   private final NetworkTableEntry joystickData = tab
       .add("Joystick Output", new double[] { 0, 0, 0 })
       .withPosition(11, 0)
