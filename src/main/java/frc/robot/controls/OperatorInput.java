@@ -15,11 +15,11 @@ import frc.robot.commands.gyroscope.GyroToggle;
 import frc.robot.commands.gyroscope.ZeroGyroYaw;
 import frc.robot.commands.hatch.HatchPull;
 import frc.robot.commands.hatch.HatchPush;
-import frc.robot.commands.jetson.JetsonOnGroup;
+import frc.robot.commands.jetson.JetsonOn;
 import frc.robot.commands.jetson.JetsonPowerCycle;
 import frc.robot.commands.jetson.JetsonPowerDefault;
 import frc.robot.commands.jetson.JetsonPowerOn;
-import frc.robot.commands.jetson.JetsonResetGroup;
+import frc.robot.commands.jetson.JetsonReset;
 import frc.robot.Config;
 import frc.robot.RobotMap;
 import frc.robot.controls.DriveJoystick;
@@ -92,20 +92,12 @@ public class OperatorInput {
       yButton.whenPressed(new GyroToggle());
     }
 
-    // TODO: Move these to shuffleBoard
     if (Config.jetsonSubsystemEnabled) {
-      // final JoystickButton backButton = new JoystickButton(driveJoystick, JoystickPorts.backButton);
-      // backButton.whenPressed(new JetsonPowerCycle());
-      // backButton.whenReleased(new JetsonPowerDefault());
-
-      // final JoystickButton startButton = new JoystickButton(driveJoystick, JoystickPorts.startButton);
-      // startButton.whenPressed(new JetsonPowerOn());
-      // startButton.whenReleased(new JetsonPowerDefault());
-      Logger.tab.add("Jetson On", new JetsonOnGroup())
+      Logger.tab.add("Jetson On", new JetsonOn())
       .withWidget(BuiltInWidgets.kCommand)
       .withPosition(1, 2)
       .withSize(1, 1);
-      Logger.tab.add("Jetson Reset", new JetsonResetGroup())
+      Logger.tab.add("Jetson Reset", new JetsonReset())
       .withWidget(BuiltInWidgets.kCommand)
       .withPosition(1, 3)
       .withSize(1, 1);

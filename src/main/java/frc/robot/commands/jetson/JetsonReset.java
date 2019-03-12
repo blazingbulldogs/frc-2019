@@ -10,11 +10,11 @@ package frc.robot.commands.jetson;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import frc.robot.commands.Wait;
 
-public class JetsonResetGroup extends CommandGroup {
+public class JetsonReset extends CommandGroup {
   /**
    * Turns Jetson On
    */
-  public JetsonResetGroup() {
+  public JetsonReset() {
     // Add Commands here:
     // e.g. addSequential(new Command1());
     // addSequential(new Command2());
