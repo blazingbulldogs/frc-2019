@@ -30,9 +30,9 @@ public class RobotMap {
 
   // Talon/Victor motor controllers
   public static final int victorRearRight = 4;
-  public static final int talonFrontRight = 3;
-  public static final int victorRearLeft = 1;
-  public static final int talonFrontLeft = 2;
+  public static final int talonFrontRight = 2;
+  public static final int victorRearLeft = 3;
+  public static final int talonFrontLeft = 1;
 
   // Solenoids
   public static final int hatchSolenoid1 = 1;
