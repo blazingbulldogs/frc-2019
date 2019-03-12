@@ -24,13 +24,11 @@ public class RobotMap {
   // public static int rangefinderPort = 1;
   // public static int rangefinderModule = 1;
 
-  // Analog gyroscope port
-  public static final int gyro = 0;
 
   // Joystick USB port
   public static final int joystick = 0;
 
-  // Spark motor controllers
+  // Talon/Victor motor controllers
   public static final int victorRearRight = 4;
   public static final int talonFrontRight = 3;
   public static final int victorRearLeft = 1;

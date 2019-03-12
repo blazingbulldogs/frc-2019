@@ -9,7 +9,6 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
-import frc.robot.structures.Config;
 import frc.robot.subsystems.Drive;
 import frc.robot.subsystems.CargoDumper;
 import frc.robot.subsystems.HatchPusher;

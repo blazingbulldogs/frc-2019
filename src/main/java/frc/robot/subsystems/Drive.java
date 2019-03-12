@@ -15,9 +15,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
 import edu.wpi.first.wpilibj.shuffleboard.BuiltInWidgets;
 import frc.robot.OperatorInput;
-import frc.robot.Robot;
 import frc.robot.RobotMap;
-import frc.robot.structures.Config;
 import frc.robot.structures.DriveJoystick;
 import frc.robot.structures.JoystickPorts;
 import frc.robot.structures.Logger;
@@ -33,8 +31,8 @@ public class Drive extends Subsystem {
 
   private final Logger logger = new Logger();
   // Motor controllers
-  public final WPI_VictorSPX talonRearRight = new WPI_VictorSPX(RobotMap.victorRearRight);
-  public final WPI_VictorSPX talonRearLeft = new WPI_VictorSPX(RobotMap.victorRearLeft);
+  public final WPI_VictorSPX victorRearRight = new WPI_VictorSPX(RobotMap.victorRearRight);
+  public final WPI_VictorSPX victorRearLeft = new WPI_VictorSPX(RobotMap.victorRearLeft);
   public final WPI_TalonSRX talonFrontRight = new WPI_TalonSRX(RobotMap.talonFrontRight);
   public final WPI_TalonSRX talonFrontLeft = new WPI_TalonSRX(RobotMap.talonFrontLeft);
 
@@ -44,10 +42,10 @@ public class Drive extends Subsystem {
   public Drive() {
     talonFrontLeft.set(ControlMode.PercentOutput, 0);
     talonFrontRight.set(ControlMode.PercentOutput, 0);
-    talonRearLeft.set(ControlMode.PercentOutput, 0);
-    talonRearRight.set(ControlMode.PercentOutput, 0);
+    victorRearLeft.set(ControlMode.PercentOutput, 0);
+    victorRearRight.set(ControlMode.PercentOutput, 0);
 
-    robotDrive = new MecanumDrive(talonFrontLeft, talonRearLeft, talonFrontRight, talonRearRight);
+    robotDrive = new MecanumDrive(talonFrontLeft, victorRearLeft, talonFrontRight, victorRearRight);
 
     Logger.tab.add("Mecanum Drive Train", robotDrive)
     .withSize(4, 2)
