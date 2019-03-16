@@ -26,6 +26,6 @@ public class JoystickPower extends InstantCommand {
   @Override
   protected void initialize() {
     powerChange = !powerChange;
-    OperatorInput.power = powerChange ? 1 : 3;
+    OperatorInput.power = powerChange ? 3 : 1;
   }
 }
