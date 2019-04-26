@@ -9,6 +9,8 @@ package frc.robot.controls;
 
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.shuffleboard.BuiltInWidgets;
+import frc.robot.Config;
+import frc.robot.RobotMap;
 import frc.robot.commands.JoystickPower;
 import frc.robot.commands.cargo.CargoRoutine;
 import frc.robot.commands.gyroscope.GyroToggle;
@@ -16,14 +18,7 @@ import frc.robot.commands.gyroscope.ZeroGyroYaw;
 import frc.robot.commands.hatch.HatchPull;
 import frc.robot.commands.hatch.HatchPush;
 import frc.robot.commands.jetson.JetsonOn;
-import frc.robot.commands.jetson.JetsonPowerCycle;
-import frc.robot.commands.jetson.JetsonPowerDefault;
-import frc.robot.commands.jetson.JetsonPowerOn;
 import frc.robot.commands.jetson.JetsonReset;
-import frc.robot.Config;
-import frc.robot.RobotMap;
-import frc.robot.controls.DriveJoystick;
-import frc.robot.controls.JoystickPorts;
 import frc.robot.util.Logger;
 
 public class OperatorInput {
